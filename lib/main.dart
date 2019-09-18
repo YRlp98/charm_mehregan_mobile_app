@@ -1,6 +1,7 @@
 import 'package:charm_mehregan/SplashScreen.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:flutter/material.dart';
+import 'LoginScreen.dart';
 import 'Theme/Colors.dart';
 
 void main() => runApp(MyApp());
@@ -12,11 +13,13 @@ class MyApp extends StatelessWidget {
       title: 'Charm Mehregan',
       debugShowCheckedModeBanner: false,
       theme: appTheme,
-      home: new Directionality(
-          textDirection: TextDirection.rtl, child: SplashScreen()),
-
-//      Routes
-//      routes: {'/': (context) => new SplashScreen()},
+      home: SplashScreen(),
+      initialRoute: '/SplashScreen',
+      routes: {
+        '/': (context) => new Directionality(
+            textDirection: TextDirection.rtl, child: HomeScreen()),
+//        '/SplashScreen': (context) => new SplashScreen()
+      },
     );
   }
 }
