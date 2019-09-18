@@ -96,7 +96,7 @@ class LoginScreen extends StatelessWidget {
                             ))),
 
 //              Forget Password
-                    new SizedBox(height: 15),
+                    new SizedBox(height: 10),
                     new Container(
                       margin: const EdgeInsets.only(right: 37, left: 37),
                       child: new FlatButton(
@@ -110,7 +110,7 @@ class LoginScreen extends StatelessWidget {
                     ),
 
 //              Create account
-                    new SizedBox(height: 15),
+                    new SizedBox(height: 0),
                     new Container(
                       margin: const EdgeInsets.only(right: 95, left: 95),
                       child: new FlatButton(
