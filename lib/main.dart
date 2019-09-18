@@ -13,12 +13,14 @@ class MyApp extends StatelessWidget {
       title: 'Charm Mehregan',
       debugShowCheckedModeBanner: false,
       theme: appTheme,
-      home: SplashScreen(),
+//      home: SplashScreen(),
       initialRoute: '/SplashScreen',
       routes: {
         '/': (context) => new Directionality(
-            textDirection: TextDirection.rtl, child: HomeScreen()),
-//        '/SplashScreen': (context) => new SplashScreen()
+            textDirection: TextDirection.rtl, child: SplashScreen()),
+        '/LoginScreen': (context) => new Directionality(
+            textDirection: TextDirection.rtl, child: LoginScreen()),
+        '/SplashScreen': (context) => new SplashScreen()
       },
     );
   }

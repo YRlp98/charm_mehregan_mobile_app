@@ -10,12 +10,12 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   _startTime() {
-    var _duration = new Duration(seconds: 5);
+    var _duration = new Duration(seconds: 2);
     return new Timer(_duration, navigationPage);
   }
 
   navigationPage() {
-    Navigator.of(context).pushNamed('/LoginScreen');
+    Navigator.of(context).pushReplacementNamed("/LoginScreen");
   }
 
   @override
