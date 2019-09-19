@@ -120,7 +120,6 @@ class LoginScreen extends StatelessWidget {
 
 //          Bottom Wave
             new Container(
-                padding: const EdgeInsets.only(top: 5),
                 width: screenSize.width,
                 height: screenSize.height / 5,
                 decoration: new BoxDecoration(
