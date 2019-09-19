@@ -1,7 +1,8 @@
 import 'package:charm_mehregan/Theme/Colors.dart';
+import 'package:charm_mehregan/WebView/WebViewContainer.dart';
 import 'package:flutter/material.dart';
 
-import 'Components/Form.dart';
+import 'package:charm_mehregan/Components/Form.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -84,7 +85,13 @@ class LoginScreen extends StatelessWidget {
 //              Forget Password
                 new SizedBox(height: 10),
                 new FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => WebViewContainer(
+                                  'https://google.com', 'فراموشی رمز عبور')));
+                    },
                     child: new Text('فراموشی رمز عبور',
                         style: TextStyle(
                             fontFamily: 'vazir',
@@ -95,7 +102,13 @@ class LoginScreen extends StatelessWidget {
 //              Create account
                 new SizedBox(height: 0),
                 new FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => WebViewContainer(
+                                  'https://google.com', 'ساخت حساب کاربری')));
+                    },
                     child: new RichText(
                         text: new TextSpan(
                       children: <TextSpan>[

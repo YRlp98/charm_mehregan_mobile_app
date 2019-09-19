@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:charm_mehregan/SplashScreen.dart';
+import 'package:charm_mehregan/Screens/SplashScreen.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
-import 'LoginScreen.dart';
+import 'Screens/LoginScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Charm Mehregan',
       debugShowCheckedModeBanner: false,
       theme: appTheme,
-//      home: SplashScreen(),
+    //  home: WebViewContainer(url: 'https://google.com',),
       initialRoute: '/SplashScreen',
       routes: {
         '/': (context) => new Directionality(
