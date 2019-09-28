@@ -10,7 +10,8 @@ class WebViewContainer extends StatefulWidget {
   WebViewContainer(this.url, this.pageTitle);
 
   @override
-  _WebViewContainerState createState() => _WebViewContainerState(this.url, this.pageTitle);
+  _WebViewContainerState createState() =>
+      _WebViewContainerState(this.url, this.pageTitle);
 }
 
 class _WebViewContainerState extends State<WebViewContainer> {
@@ -27,8 +28,6 @@ class _WebViewContainerState extends State<WebViewContainer> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-            // backgroundColor: Colors.blue,
-            // leading: Icon(Icons.arrow_back),
             centerTitle: true,
             title: new Text(
               _pageTitle,

@@ -12,20 +12,22 @@ class LoginScreen extends StatelessWidget {
     return new Scaffold(
         body: new SingleChildScrollView(
       child: new Container(
+        height: screenSize.height,
         color: darkBrownColor,
         child: new Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
 //          Logo
             new Container(
-                width: 161,
                 padding: const EdgeInsets.only(top: 55),
+                width: 161,
                 child:
                     new Image.asset('assets/images/charm_mehregan_logo.png')),
+//          Welcome message
             new Padding(
                 padding: const EdgeInsets.only(top: 121, right: 37, left: 37),
                 child: new Column(
                   children: <Widget>[
-//                      Welcome message
                     new Align(
                         alignment: Alignment.topRight,
                         child: new Text(
@@ -49,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                 )),
 
 //              Text Fields
-            new SizedBox(height: 40),
+            new SizedBox(height: 10),
             new Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -74,7 +76,7 @@ class LoginScreen extends StatelessWidget {
                             'ورود',
                             style: TextStyle(
                               fontFamily: 'vazir',
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                               color: darkBrownColor,
                             ),
@@ -102,6 +104,7 @@ class LoginScreen extends StatelessWidget {
 //              Create account
                 new SizedBox(height: 0),
                 new FlatButton(
+                    padding: const EdgeInsets.only(bottom: 10),
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -134,7 +137,7 @@ class LoginScreen extends StatelessWidget {
 //          Bottom Wave
             new Container(
                 width: screenSize.width,
-                height: screenSize.height / 5,
+                height: 80,
                 decoration: new BoxDecoration(
                     image: new DecorationImage(
                         alignment: Alignment.bottomCenter,

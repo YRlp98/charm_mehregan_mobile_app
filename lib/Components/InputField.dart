@@ -28,7 +28,7 @@ class InputField extends StatelessWidget {
             color: lightBrownColor,
             fontFamily: 'vazir',
             fontWeight: FontWeight.normal,
-            fontSize: 16,
+            fontSize: 14,
           ),
         ),
 
@@ -36,7 +36,7 @@ class InputField extends StatelessWidget {
         style: TextStyle(
             fontFamily: "vazir",
             fontWeight: FontWeight.normal,
-            fontSize: 16,
+            fontSize: 14,
             color: lightBrownColor),
       ),
     );
