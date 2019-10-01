@@ -1,8 +1,7 @@
+import 'package:charm_mehregan/Components/TextFileds/LoginScreenTextFields.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:charm_mehregan/WebView/WebViewContainer.dart';
 import 'package:flutter/material.dart';
-
-import 'package:charm_mehregan/Components/Form.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -57,7 +56,7 @@ class LoginScreen extends StatelessWidget {
               children: <Widget>[
                 new Padding(
                     padding: const EdgeInsets.only(right: 37, left: 37),
-                    child: new FormContainer()),
+                    child: new LoginScreenTextFiledsUse()),
 
 //              Login Button
                 new SizedBox(height: 10),

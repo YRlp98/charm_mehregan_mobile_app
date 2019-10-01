@@ -1,11 +1,11 @@
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:flutter/material.dart';
 
-class InputField extends StatelessWidget {
+class LoginScreenTextFileds extends StatelessWidget {
   final String labelText;
   final bool obscure;
 
-  InputField({this.labelText, this.obscure});
+  LoginScreenTextFileds({this.labelText, this.obscure});
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +38,34 @@ class InputField extends StatelessWidget {
             fontWeight: FontWeight.normal,
             fontSize: 14,
             color: lightBrownColor),
+      ),
+    );
+  }
+}
+
+class LoginScreenTextFiledsUse extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      child: new Column(
+        children: <Widget>[
+          new Form(
+              child: new Column(
+            children: <Widget>[
+              // Email
+              new LoginScreenTextFileds(
+                labelText: 'آدرس ایمیل',
+                obscure: false,
+              ),
+
+              // Password
+              new LoginScreenTextFileds(
+                labelText: 'رمز عبور',
+                obscure: true,
+              )
+            ],
+          ))
+        ],
       ),
     );
   }
