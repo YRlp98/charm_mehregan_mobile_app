@@ -54,11 +54,34 @@ class _ProductsScreenState extends State<ProductsScreen> {
         // Body
         body: new ListView(
           children: <Widget>[
+            // FilterButtons
             new Padding(
-              // padding: const EdgeInsets.symmetric(horizontal: 20),
               padding: const EdgeInsets.all(20),
               child: new FilterButtonsUse(),
-            )
+            ),
+
+            // SlideShow
+            Padding(
+              padding: const EdgeInsets.only(right: 20, bottom: 5),
+              child: new Directionality(
+                textDirection: TextDirection.rtl,
+                child: new Text(
+                  'محصولات ویژه',
+                  style: TextStyle(
+                      fontFamily: 'Vazir',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
+                      color: Colors.black),
+                ),
+              ),
+            ),
+            new Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: new Container(
+                height: 180,
+                color: Colors.green,
+              ),
+            ),
           ],
         ));
   }
