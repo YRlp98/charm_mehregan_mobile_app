@@ -80,7 +80,9 @@ class LoginScreen extends StatelessWidget {
                               color: darkBrownColor,
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).pushReplacementNamed('/ProductsScreen');
+                          },
                         ))),
 
 //              Forget Password

@@ -1,4 +1,4 @@
-import 'package:charm_mehregan/Components/Cards/FilterButtons.dart';
+import 'package:charm_mehregan/Components/Buttons/FilterButtons.dart';
 import 'package:charm_mehregan/DrawerMenu.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,7 @@ class ProductsScreen extends StatefulWidget {
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
-  bool isCollapsed = true;
+  // bool isCollapsed = true;
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +30,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
               Icons.menu,
             ),
             onPressed: () {
-              setState(() {
-                isCollapsed = !isCollapsed;
-              });
+              // setState(() {
+              //   isCollapsed = !isCollapsed;
+              // });
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => DrawerMenu()));
             },
@@ -67,7 +67,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
             ),
 
             // SlideShow
-            Padding(
+            new Padding(
               padding: const EdgeInsets.only(right: 20, bottom: 5),
               child: new Directionality(
                 textDirection: TextDirection.rtl,

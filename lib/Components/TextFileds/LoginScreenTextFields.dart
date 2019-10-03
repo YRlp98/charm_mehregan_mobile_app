@@ -1,11 +1,11 @@
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreenTextFileds extends StatelessWidget {
+class LoginScreenTextFiledsCreate extends StatelessWidget {
   final String labelText;
   final bool obscure;
 
-  LoginScreenTextFileds({this.labelText, this.obscure});
+  LoginScreenTextFiledsCreate({this.labelText, this.obscure});
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +53,13 @@ class LoginScreenTextFiledsUse extends StatelessWidget {
               child: new Column(
             children: <Widget>[
               // Email
-              new LoginScreenTextFileds(
+              new LoginScreenTextFiledsCreate(
                 labelText: 'آدرس ایمیل',
                 obscure: false,
               ),
 
               // Password
-              new LoginScreenTextFileds(
+              new LoginScreenTextFiledsCreate(
                 labelText: 'رمز عبور',
                 obscure: true,
               )
