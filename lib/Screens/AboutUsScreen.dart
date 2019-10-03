@@ -1,14 +1,13 @@
-import 'package:charm_mehregan/Components/Buttons/FilterButtons.dart';
 import 'package:charm_mehregan/DrawerMenu.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:flutter/material.dart';
 
-class ProductsScreen extends StatefulWidget {
+class AboutUsScreen extends StatefulWidget {
   @override
-  _ProductsScreenState createState() => _ProductsScreenState();
+  _AboutUsScreenState createState() => _AboutUsScreenState();
 }
 
-class _ProductsScreenState extends State<ProductsScreen> {
+class _AboutUsScreenState extends State<AboutUsScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -34,7 +33,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
           // Title
           title: new Text(
-            'محصولات',
+            'درباره ما',
             style: TextStyle(
                 fontFamily: 'Vazir',
                 fontWeight: FontWeight.bold,
@@ -53,36 +52,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
         // Body
         body: new ListView(
-          children: <Widget>[
-            // FilterButtons
-            new Padding(
-              padding: const EdgeInsets.all(20),
-              child: new FilterButtonsUse(),
-            ),
-
-            // SlideShow
-            new Padding(
-              padding: const EdgeInsets.only(right: 20, bottom: 5),
-              child: new Directionality(
-                textDirection: TextDirection.rtl,
-                child: new Text(
-                  'محصولات ویژه',
-                  style: TextStyle(
-                      fontFamily: 'Vazir',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13,
-                      color: Colors.black),
-                ),
-              ),
-            ),
-            new Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: new Container(
-                height: 180,
-                color: Colors.green,
-              ),
-            ),
-          ],
+          children: <Widget>[new Text('درباره ما')],
         ));
   }
 }

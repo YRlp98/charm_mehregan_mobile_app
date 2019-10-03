@@ -1,3 +1,5 @@
+import 'package:charm_mehregan/Screens/AboutUsScreen.dart';
+import 'package:charm_mehregan/Screens/ContactUsScreen.dart';
 import 'package:charm_mehregan/Screens/ProductsScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,6 +30,8 @@ class MyApp extends StatelessWidget {
         '/LoginScreen': (context) => new Directionality(
             textDirection: TextDirection.rtl, child: LoginScreen()),
         '/ProductsScreen': (context) => new ProductsScreen(),
+        '/AboutUsScreen': (context) => new AboutUsScreen(),
+        '/ContactUsScreen': (context) => new ContactUsScreen(),
         '/SplashScreen': (context) => new SplashScreen()
       },
     );

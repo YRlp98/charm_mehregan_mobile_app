@@ -43,12 +43,12 @@ class DrawerScreenButtonsUse extends StatelessWidget {
         new DrawerMenuButtonsCreate(
             buttonTitle: 'درباره ما',
             isCurrentScreen: false,
-            screenRoutes: '/ProductsScreen'),
+            screenRoutes: '/AboutUsScreen'),
         new SizedBox(height: 15),
         new DrawerMenuButtonsCreate(
             buttonTitle: 'تماس با ما',
             isCurrentScreen: false,
-            screenRoutes: '/ProductsScreen')
+            screenRoutes: '/ContactUsScreen')
       ],
     );
   }
