@@ -1,7 +1,7 @@
 import 'package:charm_mehregan/Components/Cards/FilterButtons.dart';
+import 'package:charm_mehregan/DrawerMenu.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 
 class ProductsScreen extends StatefulWidget {
   @override
@@ -9,6 +9,8 @@ class ProductsScreen extends StatefulWidget {
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
+  bool isCollapsed = true;
+
   @override
   Widget build(BuildContext context) {
     var filterButtonsUse = new FilterButtonsUse();
@@ -28,7 +30,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
               Icons.menu,
             ),
             onPressed: () {
-              // TODO:  Drawer menu
+              setState(() {
+                isCollapsed = !isCollapsed;
+              });
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => DrawerMenu()));
             },
           ),
 
