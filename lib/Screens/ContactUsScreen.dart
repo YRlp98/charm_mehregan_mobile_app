@@ -1,4 +1,4 @@
-import 'package:charm_mehregan/DrawerMenu.dart';
+import 'package:charm_mehregan/DrawerMenus/ContactUsScreenDrawerMenu.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +27,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
             ),
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => DrawerMenu()));
+                  MaterialPageRoute(builder: (context) => new ContactUsScrenDrawerMenu()));
             },
           ),
 

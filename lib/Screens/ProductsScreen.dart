@@ -1,5 +1,5 @@
 import 'package:charm_mehregan/Components/Buttons/FilterButtons.dart';
-import 'package:charm_mehregan/DrawerMenu.dart';
+import 'package:charm_mehregan/DrawerMenus/ProductsScreenDrawerMenu.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:flutter/material.dart';
 
@@ -27,8 +27,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
               Icons.menu,
             ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => DrawerMenu()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => new ProductsScrenDrawerMenu()));
             },
           ),
 
@@ -80,6 +82,39 @@ class _ProductsScreenState extends State<ProductsScreen> {
               child: new Container(
                 height: 180,
                 color: Colors.green,
+              ),
+            ),
+
+            // Products
+            new Padding(
+              padding: const EdgeInsets.all(20),
+              child: new Container(
+                height: 180,
+                color: Colors.red,
+              ),
+            ),
+
+            new Padding(
+              padding: const EdgeInsets.all(20),
+              child: new Container(
+                height: 180,
+                color: Colors.blue,
+              ),
+            ),
+
+            new Padding(
+              padding: const EdgeInsets.all(20),
+              child: new Container(
+                height: 180,
+                color: Colors.yellow,
+              ),
+            ),
+
+            new Padding(
+              padding: const EdgeInsets.all(20),
+              child: new Container(
+                height: 180,
+                color: Colors.brown,
               ),
             ),
           ],

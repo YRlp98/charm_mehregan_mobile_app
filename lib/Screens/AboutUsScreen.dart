@@ -1,4 +1,4 @@
-import 'package:charm_mehregan/DrawerMenu.dart';
+import 'package:charm_mehregan/DrawerMenus/AboutUsScreenDrawerMenu.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:flutter/material.dart';
 
@@ -26,8 +26,10 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
               Icons.menu,
             ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => DrawerMenu()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => AboutUsScrenDrawerMenu()));
             },
           ),
 
