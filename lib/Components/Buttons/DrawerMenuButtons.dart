@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 class DrawerMenuButtonsCreate extends StatelessWidget {
   final String buttonTitle;
-  final String screenRoutes;
+  final String screenRoute;
   bool isCurrentScreen = false;
 
   DrawerMenuButtonsCreate(
-      {this.buttonTitle, this.isCurrentScreen, this.screenRoutes});
+      {this.buttonTitle, this.isCurrentScreen, this.screenRoute});
   @override
   Widget build(BuildContext context) {
     return new GestureDetector(
@@ -21,7 +21,7 @@ class DrawerMenuButtonsCreate extends StatelessWidget {
       ),
       onTap: () {
         isCurrentScreen = true;
-        Navigator.of(context).pushReplacementNamed(screenRoutes);
+        Navigator.of(context).pushReplacementNamed(screenRoute);
       },
     );
   }
@@ -38,17 +38,17 @@ class DrawerScreenButtonsUse extends StatelessWidget {
         new DrawerMenuButtonsCreate(
             buttonTitle: 'محصولات',
             isCurrentScreen: false,
-            screenRoutes: '/ProductsScreen'),
+            screenRoute: '/ProductsScreen'),
         new SizedBox(height: 15),
         new DrawerMenuButtonsCreate(
             buttonTitle: 'درباره ما',
             isCurrentScreen: false,
-            screenRoutes: '/AboutUsScreen'),
+            screenRoute: '/AboutUsScreen'),
         new SizedBox(height: 15),
         new DrawerMenuButtonsCreate(
             buttonTitle: 'تماس با ما',
             isCurrentScreen: false,
-            screenRoutes: '/ContactUsScreen')
+            screenRoute: '/ContactUsScreen')
       ],
     );
   }

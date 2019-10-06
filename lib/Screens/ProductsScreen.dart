@@ -1,4 +1,5 @@
 import 'package:charm_mehregan/Components/Buttons/FilterButtons.dart';
+import 'package:charm_mehregan/Components/Sliders/ProductsSlider.dart';
 import 'package:charm_mehregan/DrawerMenus/ProductsScreenDrawerMenu.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:flutter/material.dart';
@@ -64,59 +65,29 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
             // SlideShow
             new Padding(
-              padding: const EdgeInsets.only(right: 20, bottom: 5),
-              child: new Directionality(
-                textDirection: TextDirection.rtl,
-                child: new Text(
-                  'محصولات ویژه',
-                  style: TextStyle(
-                      fontFamily: 'Vazir',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13,
-                      color: Colors.black),
-                ),
-              ),
-            ),
-            new Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: new Container(
-                height: 180,
-                color: Colors.green,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  new Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: new Text(
+                      'محصولات ویژه',
+                      style: TextStyle(
+                          fontFamily: 'Vazir',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13,
+                          color: Colors.black),
+                    ),
+                  ),
+                  new Center(child: new ProductsSliderCreate())
+                ],
               ),
             ),
+
+            new SizedBox(height: 30),
 
             // Products
-            new Padding(
-              padding: const EdgeInsets.all(20),
-              child: new Container(
-                height: 180,
-                color: Colors.red,
-              ),
-            ),
-
-            new Padding(
-              padding: const EdgeInsets.all(20),
-              child: new Container(
-                height: 180,
-                color: Colors.blue,
-              ),
-            ),
-
-            new Padding(
-              padding: const EdgeInsets.all(20),
-              child: new Container(
-                height: 180,
-                color: Colors.yellow,
-              ),
-            ),
-
-            new Padding(
-              padding: const EdgeInsets.all(20),
-              child: new Container(
-                height: 180,
-                color: Colors.brown,
-              ),
-            ),
           ],
         ));
   }

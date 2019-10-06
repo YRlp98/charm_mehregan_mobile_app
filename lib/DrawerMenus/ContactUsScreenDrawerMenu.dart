@@ -1,5 +1,4 @@
 import 'package:charm_mehregan/Components/Buttons/DrawerMenuButtons.dart';
-import 'package:charm_mehregan/Screens/AboutUsScreen.dart';
 import 'package:charm_mehregan/Screens/ContactUsScreen.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +12,7 @@ class ContactUsScrenDrawerMenu extends StatefulWidget {
 class _ContactUsScrenDrawerMenuState extends State<ContactUsScrenDrawerMenu> {
   bool isCollapsed = false;
   var screenHeight, screenWidth;
-  final Duration duration = const Duration(milliseconds: 300);
+  final Duration duration = const Duration(milliseconds: 200);
 
   @override
   Widget build(BuildContext context) {

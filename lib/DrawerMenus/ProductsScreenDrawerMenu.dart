@@ -12,7 +12,7 @@ class ProductsScrenDrawerMenu extends StatefulWidget {
 class _ProductsScrenDrawerMenuState extends State<ProductsScrenDrawerMenu> {
   bool isCollapsed = false;
   var screenHeight, screenWidth;
-  final Duration duration = const Duration(milliseconds: 300);
+  final Duration duration = const Duration(milliseconds: 200);
 
   @override
   Widget build(BuildContext context) {

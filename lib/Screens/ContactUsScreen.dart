@@ -52,7 +52,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
 
         // Body
         body: new ListView(
-          children: <Widget>[new Text('درباره ما')],
+          children: <Widget>[new Text('تماس با ما')],
         ));
   }
 }
