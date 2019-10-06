@@ -51,10 +51,7 @@ class ProductsSliderCreate extends StatelessWidget {
                     imageUrl:
                         'https://ruitertassen.com/wp-content/uploads/2018/04/brown-leather-laptop-backpack-satchel-for-men-732837.jpg',
                     placeholder: (context, url) =>
-                        new SizedBox(
-                          height: 50,
-                          width: 50,
-                          child: new CircularProgressIndicator()),
+                        new CircularProgressIndicator(),
                     errorWidget: (context, url, error) => new Icon(Icons.error),
                   ),
                   onTap: () {
