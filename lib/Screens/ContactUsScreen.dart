@@ -49,7 +49,11 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
 
         // Body
         body: new ListView(
-          children: <Widget>[new Text('تماس با ما')],
+          children: <Widget>[
+            new Center(
+                child: new Text('تماس با ما',
+                    style: TextStyle(fontFamily: 'Vazir')))
+          ],
         ));
   }
 }

@@ -49,7 +49,11 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
 
         // Body
         body: new ListView(
-          children: <Widget>[new Text('درباره ما')],
+          children: <Widget>[
+            new Center(
+                child: new Text('درباره ما',
+                    style: TextStyle(fontFamily: 'Vazir')))
+          ],
         ));
   }
 }
