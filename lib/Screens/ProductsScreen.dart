@@ -1,10 +1,16 @@
 import 'package:charm_mehregan/Components/Buttons/FilterButtons.dart';
+import 'package:charm_mehregan/Components/DrawerMenu/KFDrawer.dart' as prefix0;
 import 'package:charm_mehregan/Components/Sliders/ProductsSlider.dart';
-import 'package:charm_mehregan/DrawerMenus/ProductsScreenDrawerMenu.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:flutter/material.dart';
+import 'package:kf_drawer/kf_drawer.dart';
 
-class ProductsScreen extends StatefulWidget {
+// class KFProducts extends KFDrawerContent {
+//   KFProducts({Key key});
+// }
+
+class ProductsScreen extends KFDrawerContent {
+  ProductsScreen({Key key});
   @override
   _ProductsScreenState createState() => _ProductsScreenState();
 }
@@ -27,12 +33,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
             icon: Icon(
               Icons.menu,
             ),
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => new ProductsScrenDrawerMenu()));
-            },
+            onPressed: widget.onMenuPressed,
           ),
 
           // Title

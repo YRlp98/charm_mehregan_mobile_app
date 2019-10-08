@@ -1,8 +1,8 @@
-import 'package:charm_mehregan/DrawerMenus/ContactUsScreenDrawerMenu.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:flutter/material.dart';
+import 'package:kf_drawer/kf_drawer.dart';
 
-class ContactUsScreen extends StatefulWidget {
+class ContactUsScreen extends KFDrawerContent {
   @override
   _ContactUsScreenState createState() => _ContactUsScreenState();
 }
@@ -25,10 +25,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
             icon: Icon(
               Icons.menu,
             ),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => new ContactUsScrenDrawerMenu()));
-            },
+            onPressed: widget.onMenuPressed,
           ),
 
           // Title

@@ -1,3 +1,4 @@
+import 'package:charm_mehregan/Components/DrawerMenu/KFDrawer.dart';
 import 'package:charm_mehregan/Screens/AboutUsScreen.dart';
 import 'package:charm_mehregan/Screens/ContactUsScreen.dart';
 import 'package:charm_mehregan/Screens/ProductsScreen.dart';
@@ -6,9 +7,13 @@ import 'package:flutter/services.dart';
 
 import 'package:charm_mehregan/Screens/SplashScreen.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
+import 'Components/DrawerMenu/ClassBuilder.dart';
 import 'Screens/LoginScreen.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  ClassBuilder.registerClasses();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -29,6 +34,7 @@ class MyApp extends StatelessWidget {
             textDirection: TextDirection.rtl, child: SplashScreen()),
         '/LoginScreen': (context) => new Directionality(
             textDirection: TextDirection.rtl, child: LoginScreen()),
+        '/KFDrawer': (context) => new KFDrawer(),
         '/ProductsScreen': (context) => new ProductsScreen(),
         '/AboutUsScreen': (context) => new AboutUsScreen(),
         '/ContactUsScreen': (context) => new ContactUsScreen(),

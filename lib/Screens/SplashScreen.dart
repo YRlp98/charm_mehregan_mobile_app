@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   navigationPage() {
-    Navigator.of(context).pushReplacementNamed("/ProductsScreen");
+    Navigator.of(context).pushReplacementNamed("/KFDrawer");
   }
 
   @override
