@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
 
-    return MaterialApp(
+    return new MaterialApp(
       title: 'Charm Mehregan',
       debugShowCheckedModeBanner: false,
       theme: appTheme,
