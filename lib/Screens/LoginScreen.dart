@@ -1,9 +1,13 @@
 import 'package:charm_mehregan/Components/TextFileds/LoginScreenTextFields.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
+import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:charm_mehregan/WebView/WebViewContainer.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
+  double height10 = 1.29 * SizeConfig.heightMultiplier;
+  double fontSize14 = 1.80 * SizeConfig.textMultiplier;
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -18,13 +22,19 @@ class LoginScreen extends StatelessWidget {
           children: <Widget>[
 //          Logo
             new Container(
-                padding: const EdgeInsets.only(top: 55),
-                width: 161,
+                padding: EdgeInsets.only(
+                    top: 7.10 * SizeConfig.heightMultiplier), // 55
+                width: 39.17 * SizeConfig.imageSizeMultiplier, // 161
                 child:
                     new Image.asset('assets/images/charm_mehregan_logo.png')),
 //          Welcome message
             new Padding(
-                padding: const EdgeInsets.only(top: 121, right: 37, left: 37),
+                padding: EdgeInsets.only(
+                    top: 15.63 * SizeConfig.heightMultiplier,
+                    right: 9.00 * SizeConfig.imageSizeMultiplier,
+                    left: 9.00 *
+                        SizeConfig
+                            .imageSizeMultiplier), // top: 121, right: 37, left: 37
                 child: new Column(
                   children: <Widget>[
                     new Align(
@@ -34,34 +44,39 @@ class LoginScreen extends StatelessWidget {
                           style: TextStyle(
                               fontFamily: 'vazir',
                               fontWeight: FontWeight.bold,
-                              fontSize: 17,
+                              fontSize: 2.19 * SizeConfig.textMultiplier, // 17
                               color: lightBrownColor),
                         )),
-                    new SizedBox(height: 1),
+                    new SizedBox(
+                        height: 0.12 * SizeConfig.heightMultiplier), // 1
                     new Text(
                       'لطفا آدرس ایمیل و رمز عبور اکانت خود را وارد کنید و سپس روی دکمه ورود کلیک کنید',
                       style: TextStyle(
                           fontFamily: 'vazir',
                           fontWeight: FontWeight.normal,
-                          fontSize: 13,
+                          fontSize: 1.67 * SizeConfig.textMultiplier, // 13
                           color: lightBrownColor),
                     )
                   ],
                 )),
 
 //              Text Fields
-            new SizedBox(height: 10),
+            new SizedBox(height: height10), // 10
             new Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 new Padding(
-                    padding: const EdgeInsets.only(right: 37, left: 37),
+                    padding: EdgeInsets.symmetric(
+                        horizontal:
+                            9.00 * SizeConfig.imageSizeMultiplier), // 37
                     child: new LoginScreenTextFiledsUse()),
 
 //              Login Button
-                new SizedBox(height: 10),
+                new SizedBox(height: height10), // 10
                 new Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 37),
+                    margin: EdgeInsets.symmetric(
+                        horizontal:
+                            9.00 * SizeConfig.imageSizeMultiplier), // 37
                     child: new SizedBox(
                         width: double.infinity,
                         child: new RaisedButton(
@@ -70,23 +85,27 @@ class LoginScreen extends StatelessWidget {
                           splashColor: darkBrownColor,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5)),
-                          padding: const EdgeInsets.all(7),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 1.70 * SizeConfig.imageSizeMultiplier,
+                              vertical:
+                                  0.90 * SizeConfig.heightMultiplier), // 7
                           child: new Text(
                             'ورود',
                             style: TextStyle(
                               fontFamily: 'vazir',
-                              fontSize: 14,
+                              fontSize: fontSize14, // 14
                               fontWeight: FontWeight.bold,
                               color: darkBrownColor,
                             ),
                           ),
                           onPressed: () {
-                            Navigator.of(context).pushReplacementNamed('/ProductsScreen');
+                            Navigator.of(context)
+                                .pushReplacementNamed('/ProductsScreen');
                           },
                         ))),
 
 //              Forget Password
-                new SizedBox(height: 10),
+                new SizedBox(height: height10), // 10
                 new FlatButton(
                     onPressed: () {
                       Navigator.push(
@@ -99,13 +118,12 @@ class LoginScreen extends StatelessWidget {
                         style: TextStyle(
                             fontFamily: 'vazir',
                             fontWeight: FontWeight.normal,
-                            fontSize: 14,
+                            fontSize: fontSize14, // 14
                             color: lightBrownColor))),
 
 //              Create account
-                new SizedBox(height: 0),
                 new FlatButton(
-                    padding: const EdgeInsets.only(bottom: 10),
+                    padding: EdgeInsets.only(bottom: height10), // 10
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -121,14 +139,14 @@ class LoginScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontFamily: 'vazir',
                                 fontWeight: FontWeight.normal,
-                                fontSize: 14,
+                                fontSize: fontSize14, // 14
                                 color: lightBrownColor)),
                         new TextSpan(
                             text: ' یکی بسازید',
                             style: TextStyle(
                                 fontFamily: 'vazir',
                                 fontWeight: FontWeight.bold,
-                                fontSize: 14,
+                                fontSize: fontSize14, // 14
                                 color: lightBrownColor)),
                       ],
                     ))),
@@ -138,7 +156,7 @@ class LoginScreen extends StatelessWidget {
 //          Bottom Wave
             new Container(
                 width: screenSize.width,
-                height: 80,
+                height: 10.37 * SizeConfig.heightMultiplier,
                 decoration: new BoxDecoration(
                     image: new DecorationImage(
                         alignment: Alignment.bottomCenter,

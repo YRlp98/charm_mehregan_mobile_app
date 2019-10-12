@@ -1,7 +1,13 @@
 import 'package:charm_mehregan/Theme/Colors.dart';
+import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreenTextFiledsCreate extends StatelessWidget {
+  // TODO: Make it extends KFDrawer
+  double fontSize14 = 1.80 * SizeConfig.textMultiplier;
+  double verticalPaddingBy10 = 1.29 * SizeConfig.heightMultiplier;
+  double horizantaPaddingBy10 = 2.43 * SizeConfig.heightMultiplier;
+
   final String labelText;
   final bool obscure;
 
@@ -10,14 +16,16 @@ class LoginScreenTextFiledsCreate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      margin: const EdgeInsets.only(top: 10),
+      margin: EdgeInsets.only(top: 1.29 * SizeConfig.heightMultiplier), // 10
       child: new TextFormField(
         textDirection: TextDirection.ltr,
         obscureText: obscure,
 
 //        TextField style
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(10),
+          contentPadding: EdgeInsets.symmetric(
+              vertical: verticalPaddingBy10,
+              horizontal: horizantaPaddingBy10), // all: 10
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: lightBrownColor),
               borderRadius: BorderRadius.circular(5)),
@@ -28,7 +36,7 @@ class LoginScreenTextFiledsCreate extends StatelessWidget {
             color: lightBrownColor,
             fontFamily: 'vazir',
             fontWeight: FontWeight.normal,
-            fontSize: 14,
+            fontSize: fontSize14, // 14
           ),
         ),
 
@@ -36,7 +44,7 @@ class LoginScreenTextFiledsCreate extends StatelessWidget {
         style: TextStyle(
             fontFamily: "vazir",
             fontWeight: FontWeight.normal,
-            fontSize: 14,
+            fontSize: fontSize14, // 14
             color: lightBrownColor),
       ),
     );

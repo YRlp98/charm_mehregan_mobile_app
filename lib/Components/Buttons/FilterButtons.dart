@@ -29,7 +29,7 @@ class _FilterButtonsCreatState extends State<FilterButtonsCreat> {
       child: new Container(
         padding: EdgeInsets.symmetric(
             horizontal: horizantalPaddingBy10, vertical: verticalPaddingBy10),
-        height: 5.16 * SizeConfig.heightMultiplier, //40
+        height: 5.16 * SizeConfig.heightMultiplier, // 40
         decoration: new BoxDecoration(
           borderRadius: new BorderRadius.circular(10),
           boxShadow: [
@@ -45,13 +45,13 @@ class _FilterButtonsCreatState extends State<FilterButtonsCreat> {
               style: TextStyle(
                   fontFamily: 'Vazir',
                   fontWeight: FontWeight.normal,
-                  fontSize: 1.67 * SizeConfig.textMultiplier, //13
+                  fontSize: 1.67 * SizeConfig.textMultiplier, // 13
                   color: Colors.white),
             ),
-            new SizedBox(width: 1.94 * SizeConfig.imageSizeMultiplier), //8
+            new SizedBox(width: 1.94 * SizeConfig.imageSizeMultiplier), // 8
             new Container(
-              height: 2.58 * SizeConfig.heightMultiplier, //20
-              width: 4.86 * SizeConfig.imageSizeMultiplier, //20
+              height: 2.58 * SizeConfig.heightMultiplier, // 20
+              width: 4.86 * SizeConfig.imageSizeMultiplier, // 20
               child: widget.filterCardImage,
             ),
           ],
