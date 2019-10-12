@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
@@ -17,8 +18,8 @@ class ProductsSliderCreate extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Center(
       child: new Container(
-        padding: const EdgeInsets.only(top: 8),
-        height: 180,
+        padding: EdgeInsets.only(top: 1.03 * SizeConfig.heightMultiplier),
+        height: 23.25 * SizeConfig.heightMultiplier,
         child: new ClipRRect(
             borderRadius: new BorderRadius.circular(10),
             child: new Carousel(
