@@ -2,10 +2,7 @@ import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
 
-class FilterButtonsCreat extends StatelessWidget {
-  double horizantalPaddingBy10 = 2.43 * SizeConfig.imageSizeMultiplier;
-  double verticalPaddingBy10 = 1.29 * SizeConfig.heightMultiplier;
-
+class FilterButtonsCreat extends StatefulWidget {
   final Image filterCardImage;
   final String filterCardText;
   final Color filterCardColor;
@@ -18,6 +15,15 @@ class FilterButtonsCreat extends StatelessWidget {
       this.filterCardOnPressd});
 
   @override
+  _FilterButtonsCreatState createState() => _FilterButtonsCreatState();
+}
+
+class _FilterButtonsCreatState extends State<FilterButtonsCreat> {
+  double horizantalPaddingBy10 = 2.43 * SizeConfig.imageSizeMultiplier;
+
+  double verticalPaddingBy10 = 1.29 * SizeConfig.heightMultiplier;
+
+  @override
   Widget build(BuildContext context) {
     return new GestureDetector(
       child: new Container(
@@ -28,14 +34,14 @@ class FilterButtonsCreat extends StatelessWidget {
           borderRadius: new BorderRadius.circular(10),
           boxShadow: [
             new BoxShadow(
-                color: filterCardColor, offset: new Offset(0, 3), blurRadius: 5)
+                color: widget.filterCardColor, offset: new Offset(0, 3), blurRadius: 5)
           ],
-          color: filterCardColor,
+          color: widget.filterCardColor,
         ),
         child: new Row(
           children: <Widget>[
             new Text(
-              filterCardText,
+              widget.filterCardText,
               style: TextStyle(
                   fontFamily: 'Vazir',
                   fontWeight: FontWeight.normal,
@@ -46,13 +52,13 @@ class FilterButtonsCreat extends StatelessWidget {
             new Container(
               height: 2.58 * SizeConfig.heightMultiplier, //20
               width: 4.86 * SizeConfig.imageSizeMultiplier, //20
-              child: filterCardImage,
+              child: widget.filterCardImage,
             ),
           ],
         ),
       ),
       onTap: () {
-        filterCardOnPressd;
+        widget.filterCardOnPressd;
       },
     );
   }
