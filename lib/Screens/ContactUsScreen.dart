@@ -1,4 +1,5 @@
 import 'package:charm_mehregan/Theme/Colors.dart';
+import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 
@@ -34,7 +35,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
             style: TextStyle(
                 fontFamily: 'Vazir',
                 fontWeight: FontWeight.bold,
-                fontSize: 14,
+                fontSize: 2 * SizeConfig.textMultiplier,
                 color: darkBrownColor),
           ),
 
