@@ -1,7 +1,11 @@
 import 'package:charm_mehregan/Theme/Colors.dart';
+import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
 
 class FilterButtonsCreat extends StatelessWidget {
+  double horizantalPaddingBy10 = 2.43 * SizeConfig.imageSizeMultiplier;
+  double verticalPaddingBy10 = 1.29 * SizeConfig.heightMultiplier;
+
   final Image filterCardImage;
   final String filterCardText;
   final Color filterCardColor;
@@ -17,8 +21,9 @@ class FilterButtonsCreat extends StatelessWidget {
   Widget build(BuildContext context) {
     return new GestureDetector(
       child: new Container(
-        padding: const EdgeInsets.all(10),
-        height: 40,
+        padding: EdgeInsets.symmetric(
+            horizontal: horizantalPaddingBy10, vertical: verticalPaddingBy10),
+        height: 5.16 * SizeConfig.heightMultiplier, //40
         decoration: new BoxDecoration(
           borderRadius: new BorderRadius.circular(10),
           boxShadow: [
@@ -34,13 +39,13 @@ class FilterButtonsCreat extends StatelessWidget {
               style: TextStyle(
                   fontFamily: 'Vazir',
                   fontWeight: FontWeight.normal,
-                  fontSize: 13,
+                  fontSize: 1.67 * SizeConfig.textMultiplier, //13
                   color: Colors.white),
             ),
-            new SizedBox(width: 8),
+            new SizedBox(width: 1.94 * SizeConfig.imageSizeMultiplier), //8
             new Container(
-              height: 20,
-              width: 20,
+              height: 2.58 * SizeConfig.heightMultiplier, //20
+              width: 4.86 * SizeConfig.imageSizeMultiplier, //20
               child: filterCardImage,
             ),
           ],
