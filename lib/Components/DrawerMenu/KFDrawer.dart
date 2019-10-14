@@ -3,7 +3,7 @@ import 'package:charm_mehregan/Screens/AboutUsScreen.dart';
 import 'package:charm_mehregan/Screens/ContactUsScreen.dart';
 import 'package:charm_mehregan/Screens/ProductsScreen.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
-import 'package:charm_mehregan/WebView/WebViewContainer.dart';
+import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 import 'package:kf_drawer/kf_drawer.dart' as prefix0;
@@ -14,6 +14,8 @@ class KFDrawer extends StatefulWidget {
 }
 
 class _KFDrawerState extends State<KFDrawer> {
+  double fontSize18 = 2.32 * SizeConfig.textMultiplier;
+
   KFDrawerController _drawerController;
 
   @override
@@ -29,7 +31,7 @@ class _KFDrawerState extends State<KFDrawer> {
               style: TextStyle(
                   fontFamily: 'Vazir',
                   fontWeight: FontWeight.normal,
-                  fontSize: 18,
+                  fontSize: fontSize18, // 18
                   color: lightBrownColor),
             ),
             page: ProductsScreen(),
@@ -42,7 +44,7 @@ class _KFDrawerState extends State<KFDrawer> {
               style: TextStyle(
                   fontFamily: 'Vazir',
                   fontWeight: FontWeight.normal,
-                  fontSize: 18,
+                  fontSize: fontSize18, // 18
                   color: lightBrownColor),
             ),
             page: new AboutUsScreen(),
@@ -55,7 +57,7 @@ class _KFDrawerState extends State<KFDrawer> {
               style: TextStyle(
                   fontFamily: 'Vazir',
                   fontWeight: FontWeight.normal,
-                  fontSize: 18,
+                  fontSize: fontSize18, // 18
                   color: lightBrownColor),
             ),
             page: ContactUsScreen(),
@@ -72,8 +74,9 @@ class _KFDrawerState extends State<KFDrawer> {
           header: new Align(
             alignment: Alignment.centerLeft,
             child: new Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              width: 161,
+              padding: EdgeInsets.symmetric(
+                  horizontal: 3.89 * SizeConfig.imageSizeMultiplier), // 16
+              width: 39.17 * SizeConfig.imageSizeMultiplier, // 161
               child: new Image.asset('assets/images/charm_mehregan_logo.png'),
               alignment: Alignment.centerLeft,
             ),
@@ -82,13 +85,14 @@ class _KFDrawerState extends State<KFDrawer> {
             icon: Icon(
               Icons.input,
               color: lightBrownColor,
+              size: 3.11 * SizeConfig.heightMultiplier, // 24
             ),
             text: new Text(
               'پنل مدیریت',
               style: TextStyle(
                   fontFamily: 'Vazir',
                   fontWeight: FontWeight.normal,
-                  fontSize: 18,
+                  fontSize: fontSize18, // 18
                   color: lightBrownColor),
             ),
             onPressed: () {

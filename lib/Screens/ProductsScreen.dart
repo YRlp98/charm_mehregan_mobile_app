@@ -1,7 +1,7 @@
 import 'package:charm_mehregan/Components/Buttons/FilterButtons.dart';
-import 'package:charm_mehregan/Components/DrawerMenu/KFDrawer.dart' as prefix0;
 import 'package:charm_mehregan/Components/Sliders/ProductsSlider.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
+import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 
@@ -16,6 +16,9 @@ class ProductsScreen extends KFDrawerContent {
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
+  double horizantalPaddingBy20 = 4.86 * SizeConfig.imageSizeMultiplier;
+  double verticalPaddingBy20 = 2.58 * SizeConfig.heightMultiplier;
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -42,7 +45,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
             style: TextStyle(
                 fontFamily: 'Vazir',
                 fontWeight: FontWeight.bold,
-                fontSize: 14,
+                fontSize: 2 * SizeConfig.textMultiplier,
                 color: darkBrownColor),
           ),
 
@@ -60,13 +63,17 @@ class _ProductsScreenState extends State<ProductsScreen> {
           children: <Widget>[
             // FilterButtons
             new Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.symmetric(
+                  horizontal: horizantalPaddingBy20,
+                  vertical: verticalPaddingBy20),
               child: new FilterButtonsUse(),
             ),
 
             // SlideShow
             new Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.symmetric(
+                horizontal: horizantalPaddingBy20,
+              ), //20
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
@@ -77,7 +84,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                       style: TextStyle(
                           fontFamily: 'Vazir',
                           fontWeight: FontWeight.bold,
-                          fontSize: 13,
+                          fontSize: 1.67 * SizeConfig.textMultiplier,
                           color: Colors.black),
                     ),
                   ),
@@ -86,9 +93,13 @@ class _ProductsScreenState extends State<ProductsScreen> {
               ),
             ),
 
-            new SizedBox(height: 30),
+            new SizedBox(height: 3.87 * SizeConfig.heightMultiplier),
 
             // Products
+            new Container(
+              height: 25.83 * SizeConfig.heightMultiplier,
+              color: Colors.green,
+            )
           ],
         ));
   }

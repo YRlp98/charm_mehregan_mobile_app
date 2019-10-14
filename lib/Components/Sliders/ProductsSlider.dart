@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
@@ -17,16 +18,16 @@ class ProductsSliderCreate extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Center(
       child: new Container(
-        padding: const EdgeInsets.only(top: 8),
-        height: 180,
+        padding: EdgeInsets.only(top: 1.03 * SizeConfig.heightMultiplier),
+        height: 23.25 * SizeConfig.heightMultiplier,
         child: new ClipRRect(
             borderRadius: new BorderRadius.circular(10),
             child: new Carousel(
-              boxFit: BoxFit.fill,
+              boxFit: BoxFit.cover,
               animationCurve: Curves.fastOutSlowIn,
               animationDuration: Duration(milliseconds: 3000),
               autoplayDuration: Duration(seconds: 5),
-              dotSize: 5,
+              dotSize: 0.64 * SizeConfig.heightMultiplier,
               dotSpacing: 10,
               dotBgColor: Colors.transparent,
               dotPosition: DotPosition.bottomRight,
@@ -34,7 +35,7 @@ class ProductsSliderCreate extends StatelessWidget {
               images: [
                 new GestureDetector(
                   child: new CachedNetworkImage(
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                     imageUrl:
                         'https://www.paperhigh.com/media/catalog/product/cache/1/thumbnail/600x600/9df78eab33525d08d6e5fb8d27136e95/l/o/low_res_large_vintage_leather_stachel_llptl_lifestyle.jpg',
                     placeholder: (context, url) =>
@@ -47,7 +48,7 @@ class ProductsSliderCreate extends StatelessWidget {
                 ),
                 new GestureDetector(
                   child: new CachedNetworkImage(
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                     imageUrl:
                         'https://ruitertassen.com/wp-content/uploads/2018/04/brown-leather-laptop-backpack-satchel-for-men-732837.jpg',
                     placeholder: (context, url) =>
@@ -60,7 +61,7 @@ class ProductsSliderCreate extends StatelessWidget {
                 ),
                 new GestureDetector(
                   child: new CachedNetworkImage(
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                     imageUrl:
                         'https://ruitertassen.com/wp-content/uploads/2018/04/durable-vegetable-tanned-brown-leather-satchel-bag-732337.jpg',
                     placeholder: (context, url) =>
@@ -73,7 +74,7 @@ class ProductsSliderCreate extends StatelessWidget {
                 ),
                 new GestureDetector(
                   child: new CachedNetworkImage(
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                     imageUrl:
                         'https://ruitertassen.com/wp-content/uploads/2018/04/large-mens-leather-backpack-satchel-732237.jpg',
                     placeholder: (context, url) =>
