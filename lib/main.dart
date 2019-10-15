@@ -6,6 +6,7 @@ import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:charm_mehregan/Screens/SplashScreen.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
+import 'package:flutter/services.dart';
 import 'Components/DrawerMenu/ClassBuilder.dart';
 import 'Screens/LoginScreen.dart';
 
@@ -18,10 +19,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 //    Prevent device orientation changes
-    // SystemChrome.setPreferredOrientations([
-    //   DeviceOrientation.portraitUp,
-    //   DeviceOrientation.portraitDown,
-    // ]);
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
 
     return new LayoutBuilder(
       builder: (context, constraints) {
