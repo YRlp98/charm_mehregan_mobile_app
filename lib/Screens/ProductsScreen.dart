@@ -1,13 +1,12 @@
 import 'package:charm_mehregan/Components/Buttons/FilterButtons.dart';
+import 'package:charm_mehregan/Components/Cards/ProductsCards.dart';
 import 'package:charm_mehregan/Components/Sliders/ProductsSlider.dart';
+import 'package:charm_mehregan/Models/Products.dart';
+import 'package:charm_mehregan/Services/ProductsService.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:kf_drawer/kf_drawer.dart';
-
-// class KFProducts extends KFDrawerContent {
-//   KFProducts({Key key});
-// }
 
 class ProductsScreen extends KFDrawerContent {
   ProductsScreen({Key key});
@@ -19,10 +18,35 @@ class _ProductsScreenState extends State<ProductsScreen> {
   double horizantalPaddingBy20 = 4.86 * SizeConfig.imageSizeMultiplier;
   double verticalPaddingBy20 = 2.58 * SizeConfig.heightMultiplier;
 
+// !TODO: Get Data
+  int _currentPage = 1;
+
+  List<Products> _products = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _getProducts();
+  }
+
+  _getProducts({int page = 1}) async {
+    var response = await ProductsService.getProducts(page);
+
+    // To check app is getting data or not
+    print(response['products']);
+
+    setState(() {
+      _products.addAll(response['products']);
+      _currentPage = response['current_page'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         backgroundColor: Colors.white,
+
+// .TODO: Finish
 
         // Appbar
         appBar: new AppBar(
@@ -95,7 +119,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
             new SizedBox(height: 3.87 * SizeConfig.heightMultiplier),
 
-            // Products
+            new ProductsCardsCreate() // Products
+            ,
+
             new Container(
               height: 25.83 * SizeConfig.heightMultiplier,
               color: Colors.green,
