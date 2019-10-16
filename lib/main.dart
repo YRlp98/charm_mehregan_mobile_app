@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
               title: 'Charm Mehregan',
               debugShowCheckedModeBanner: false,
               theme: appTheme,
-              initialRoute: '/SplashScreen',
+              // initialRoute: '/SplashScreen',
               routes: {
                 '/': (context) => new Directionality(
                     textDirection: TextDirection.rtl, child: SplashScreen()),
