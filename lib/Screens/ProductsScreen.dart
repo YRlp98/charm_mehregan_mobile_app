@@ -18,7 +18,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   double horizantalPaddingBy20 = 4.86 * SizeConfig.imageSizeMultiplier;
   double verticalPaddingBy20 = 2.58 * SizeConfig.heightMultiplier;
 
-// !TODO: Get Data
+//! TODO: Get Data
   int _currentPage = 1;
 
   List<Products> _products = [];
@@ -46,7 +46,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
     return new Scaffold(
         backgroundColor: Colors.white,
 
-// .TODO: Finish
+// TODO: Finish
 
         // Appbar
         appBar: new AppBar(
@@ -117,10 +117,23 @@ class _ProductsScreenState extends State<ProductsScreen> {
               ),
             ),
 
-            new SizedBox(height: 3.87 * SizeConfig.heightMultiplier),
+            new SizedBox(height: 2.59 * SizeConfig.heightMultiplier), // 20
 
-            new ProductsCardsCreate() // Products
-            ,
+            // Products
+            new Container(
+              padding:
+                  EdgeInsets.symmetric(horizontal: horizantalPaddingBy20), // 20
+              child: new GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
+                itemCount: _products.length,
+                shrinkWrap: true,
+                physics: ClampingScrollPhysics(),
+                itemBuilder: (BuildContext context, int index) {
+                  return new ProductsCards(products: _products[index]);
+                },
+              ),
+            ),
 
             new Container(
               height: 25.83 * SizeConfig.heightMultiplier,
