@@ -10,12 +10,12 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  _startTime() {
+  _startTime() async {
     var _duration = new Duration(seconds: 2);
     return new Timer(_duration, navigationPage);
   }
 
-  navigationPage() {
+  navigationPage() async {
     Navigator.of(context).pushReplacementNamed("/KFDrawer");
   }
 

@@ -100,7 +100,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                           onPressed: () {
                             Navigator.of(context)
-                                .pushReplacementNamed('/ProductsScreen');
+                                .pushReplacementNamed('/KFDrawer');
                           },
                         ))),
 
