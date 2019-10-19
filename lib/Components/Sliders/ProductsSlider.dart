@@ -33,52 +33,64 @@ class ProductsSliderCreate extends StatelessWidget {
               dotPosition: DotPosition.bottomRight,
               moveIndicatorFromBottom: 100,
               images: [
-                new GestureDetector(
+                new InkWell(
                   child: new CachedNetworkImage(
                     fit: BoxFit.cover,
                     imageUrl:
                         'https://www.paperhigh.com/media/catalog/product/cache/1/thumbnail/600x600/9df78eab33525d08d6e5fb8d27136e95/l/o/low_res_large_vintage_leather_stachel_llptl_lifestyle.jpg',
-                    placeholder: (context, url) =>
-                        new CircularProgressIndicator(),
+                    placeholder: (context, url) => new Container(
+                      height: 3.10 * SizeConfig.heightMultiplier,
+                      width: 3.10 * SizeConfig.imageSizeMultiplier,
+                      child: new Image.asset('assets/icons/loading_blocks.gif'),
+                    ),
                     errorWidget: (context, url, error) => new Icon(Icons.error),
                   ),
                   onTap: () {
                     Navigator.of(context).pushReplacementNamed('/LoginScreen');
                   },
                 ),
-                new GestureDetector(
+                new InkWell(
                   child: new CachedNetworkImage(
                     fit: BoxFit.cover,
                     imageUrl:
                         'https://ruitertassen.com/wp-content/uploads/2018/04/brown-leather-laptop-backpack-satchel-for-men-732837.jpg',
-                    placeholder: (context, url) =>
-                        new CircularProgressIndicator(),
+                    placeholder: (context, url) => new Container(
+                      height: 3.10 * SizeConfig.heightMultiplier,
+                      width: 3.10 * SizeConfig.imageSizeMultiplier,
+                      child: new Image.asset('assets/icons/loading_blocks.gif'),
+                    ),
                     errorWidget: (context, url, error) => new Icon(Icons.error),
                   ),
                   onTap: () {
                     Navigator.of(context).pushReplacementNamed('/LoginScreen');
                   },
                 ),
-                new GestureDetector(
+                new InkWell(
                   child: new CachedNetworkImage(
                     fit: BoxFit.cover,
                     imageUrl:
                         'https://ruitertassen.com/wp-content/uploads/2018/04/durable-vegetable-tanned-brown-leather-satchel-bag-732337.jpg',
-                    placeholder: (context, url) =>
-                        new CircularProgressIndicator(),
+                    placeholder: (context, url) => new Container(
+                      height: 3.10 * SizeConfig.heightMultiplier,
+                      width: 3.10 * SizeConfig.imageSizeMultiplier,
+                      child: new Image.asset('assets/icons/loading_blocks.gif'),
+                    ),
                     errorWidget: (context, url, error) => new Icon(Icons.error),
                   ),
                   onTap: () {
                     Navigator.of(context).pushReplacementNamed('/LoginScreen');
                   },
                 ),
-                new GestureDetector(
+                new InkWell(
                   child: new CachedNetworkImage(
                     fit: BoxFit.cover,
                     imageUrl:
                         'https://ruitertassen.com/wp-content/uploads/2018/04/large-mens-leather-backpack-satchel-732237.jpg',
-                    placeholder: (context, url) =>
-                        new CircularProgressIndicator(),
+                    placeholder: (context, url) => new Container(
+                      height: 3.10 * SizeConfig.heightMultiplier,
+                      width: 3.10 * SizeConfig.imageSizeMultiplier,
+                      child: new Image.asset('assets/icons/loading_blocks.gif'),
+                    ),
                     errorWidget: (context, url, error) => new Icon(Icons.error),
                   ),
                   onTap: () {

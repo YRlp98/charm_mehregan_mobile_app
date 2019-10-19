@@ -74,7 +74,7 @@ class ProductsCards extends StatelessWidget {
         //           imageUrl:
         //               'https://5.imimg.com/data5/LF/PW/MY-42404537/ladies-fashion-leather-shoes-500x500.jpg',
         //           placeholder: (context, url) => new CircularProgressIndicator(),
-        //           errorWidget: (context, url, error) => new Icon(Icons.error)),
+        //           errorWidget: (context, url, erro r) => new Icon(Icons.error)),
         //     )
         //   ],
         // ),
