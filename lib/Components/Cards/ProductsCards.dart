@@ -1,13 +1,15 @@
-import 'package:charm_mehregan/Models/Products.dart';
+import 'package:charm_mehregan/Models/ProductsModel.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-class ProductsCards extends StatelessWidget {
-  final Products products;
+class ProductsCardsModel extends StatelessWidget {
+  final ProductsModel products;
 
-  ProductsCards({@required this.products});
+  // https://5.imimg.com/data5/LF/PW/MY-42404537/ladies-fashion-leather-shoes-500x500.jpg
+
+  ProductsCardsModel({@required this.products});
 
   @override
   Widget build(BuildContext context) {
@@ -64,20 +66,6 @@ class ProductsCards extends StatelessWidget {
                   )),
             ],
           ),
-        )
-        // new Stack(
-        //   children: <Widget>[
-        //     new Container(
-        //       width: 170,
-        //       height: 148,
-        //       child: new CachedNetworkImage(
-        //           imageUrl:
-        //               'https://5.imimg.com/data5/LF/PW/MY-42404537/ladies-fashion-leather-shoes-500x500.jpg',
-        //           placeholder: (context, url) => new CircularProgressIndicator(),
-        //           errorWidget: (context, url, erro r) => new Icon(Icons.error)),
-        //     )
-        //   ],
-        // ),
-        );
+        ));
   }
 }

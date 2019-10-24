@@ -1,4 +1,4 @@
-class Products {
+class ProductsModel {
   int id;
   int userId;
   String title;
@@ -8,7 +8,7 @@ class Products {
   DateTime createdAt;
   DateTime updateAt;
 
-  Products.fromJson(Map<String, dynamic> parsedJson) {
+  ProductsModel.fromJson(Map<String, dynamic> parsedJson) {
     id = parsedJson['id'];
     userId = parsedJson['userId'];
     title = parsedJson['title'];

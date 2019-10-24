@@ -1,8 +1,11 @@
 import 'package:charm_mehregan/Components/Buttons/FilterButtons.dart';
+import 'package:charm_mehregan/Components/Buttons/TypeButtons.dart';
 import 'package:charm_mehregan/Components/Cards/ProductsCards.dart';
 import 'package:charm_mehregan/Components/Sliders/ProductsSlider.dart';
-import 'package:charm_mehregan/Models/Products.dart';
+import 'package:charm_mehregan/Models/ProductsModel.dart';
+import 'package:charm_mehregan/Models/TypesModel.dart';
 import 'package:charm_mehregan/Services/ProductsService.dart';
+import 'package:charm_mehregan/Services/TypesService.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +24,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
 //! TODO: Get Data
   int _currentPage = 1;
 
-  List<Products> _products = [];
+  List<ProductsModel> _products = [];
+  List<TypesModel> _types = [];
 
   @override
   void initState() {
@@ -29,6 +33,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
     _getProducts();
   }
 
+  // Products
   _getProducts({int page = 1}) async {
     var response = await ProductsService.getProducts(page);
 
@@ -41,12 +46,23 @@ class _ProductsScreenState extends State<ProductsScreen> {
     });
   }
 
+  // Types
+  _getTypes({int page = 1}) async {
+    var typeResponse = await TypesService.getTypes(page);
+
+    print(typeResponse['types']);
+
+    setState(() {
+      _types.addAll(typeResponse['type']);
+    });
+  }
+
+//! Finish
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         backgroundColor: Colors.white,
-
-// TODO: Finish
 
         // Appbar
         appBar: new AppBar(
@@ -130,7 +146,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 shrinkWrap: true,
                 physics: ClampingScrollPhysics(),
                 itemBuilder: (BuildContext context, int index) {
-                  return new ProductsCards(products: _products[index]);
+                  return new ProductsCardsModel(products: _products[index]);
                 },
               ),
             ),

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:charm_mehregan/Models/Products.dart';
+import 'package:charm_mehregan/Models/ProductsModel.dart';
 import 'package:http/http.dart' as http;
 
 class ProductsService {
@@ -8,10 +8,9 @@ class ProductsService {
 
     if (response.statusCode == 200) {
       var responseBody = json.decode(response.body)['data'];
-
-      List<Products> products = [];
+      List<ProductsModel> products = [];
       responseBody['data'].forEach((item) {
-        products.add(Products.fromJson(item));
+        products.add(ProductsModel.fromJson(item));
       });
 
       return {
