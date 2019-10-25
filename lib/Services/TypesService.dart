@@ -19,9 +19,9 @@ class TypesService {
     // Else    final products = await http.get('${URL}/api/${VERSTION}/products?page=${page}');
 
     if (types.statusCode == 200) {
-      var typesBody = json.decode(types.body)['data']['type'];
+      var typesBody = json.decode(types.body)['data'][0];
       List<TypesModel> typesList = [];
-      typesBody['data']['type'].forEach((item) {
+      typesBody['data'][0].forEach((item) {
         typesList.add(TypesModel.fromJson(item));
       });
 

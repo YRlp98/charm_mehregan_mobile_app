@@ -23,8 +23,11 @@ class _ProductsScreenState extends State<ProductsScreen>
   double horizantalPaddingBy20 = 4.86 * SizeConfig.imageSizeMultiplier;
   double verticalPaddingBy20 = 2.58 * SizeConfig.heightMultiplier;
 
+  ScrollController _scrollController = new ScrollController();
+
 //! TODO: Get Data
   int _currentPage = 1;
+  bool _isLoading = true;
 
   List<ProductsModel> _products = [];
   List<TypesModel> _types = [];
@@ -33,10 +36,27 @@ class _ProductsScreenState extends State<ProductsScreen>
   void initState() {
     super.initState();
     _getProducts();
+    // _getTypes();
+
+// Infinite listView
+    _scrollController.addListener(() {
+      double maxScroll = _scrollController.position.maxScrollExtent;
+      double currentScroll = _scrollController.position.pixels;
+
+      if (maxScroll - currentScroll <= 200) {
+        if (!_isLoading) {
+          _getProducts(page: _currentPage + 1);
+        }
+      }
+    });
   }
 
   // Products
   _getProducts({int page = 1}) async {
+    setState(() {
+      _isLoading = true;
+    });
+
     var response = await ProductsService.getProducts(page);
 
     // To check app is getting data or not
@@ -45,6 +65,7 @@ class _ProductsScreenState extends State<ProductsScreen>
     setState(() {
       _products.addAll(response['products']);
       _currentPage = response['current_page'];
+      _isLoading = false;
     });
   }
 
@@ -52,7 +73,7 @@ class _ProductsScreenState extends State<ProductsScreen>
   _getTypes({int page = 1}) async {
     var typeResponse = await TypesService.getTypes(page);
 
-    print(typeResponse['types']);
+    print(typeResponse['type']);
 
     setState(() {
       _types.addAll(typeResponse['type']);
@@ -152,6 +173,7 @@ class _ProductsScreenState extends State<ProductsScreen>
               child: new GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2),
+                controller: _scrollController,
                 itemCount: _products.length,
                 shrinkWrap: true,
                 physics: ClampingScrollPhysics(),
