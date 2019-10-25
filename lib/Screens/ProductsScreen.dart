@@ -9,6 +9,7 @@ import 'package:charm_mehregan/Services/TypesService.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 
 class ProductsScreen extends KFDrawerContent {
@@ -17,7 +18,8 @@ class ProductsScreen extends KFDrawerContent {
   _ProductsScreenState createState() => _ProductsScreenState();
 }
 
-class _ProductsScreenState extends State<ProductsScreen> {
+class _ProductsScreenState extends State<ProductsScreen>
+    with AutomaticKeepAliveClientMixin<ProductsScreen> {
   double horizantalPaddingBy20 = 4.86 * SizeConfig.imageSizeMultiplier;
   double verticalPaddingBy20 = 2.58 * SizeConfig.heightMultiplier;
 
@@ -107,6 +109,14 @@ class _ProductsScreenState extends State<ProductsScreen> {
                   horizontal: horizantalPaddingBy20,
                   vertical: verticalPaddingBy20),
               child: new FilterButtonsUse(),
+              // child: new ListView.builder(
+              //   shrinkWrap: true,
+              //   itemCount: _types.length,
+              //   scrollDirection: Axis.horizontal,
+              //   itemBuilder: (BuildContext context, int index) {
+              //     return new TypeButtonsModel(type: _types[index]);
+              //   },
+              // ),
             ),
 
             // SlideShow
@@ -150,12 +160,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 },
               ),
             ),
-
-            new Container(
-              height: 25.83 * SizeConfig.heightMultiplier,
-              color: Colors.green,
-            )
           ],
         ));
   }
+
+// To keep products state alive
+  @override
+  bool get wantKeepAlive => true;
 }
