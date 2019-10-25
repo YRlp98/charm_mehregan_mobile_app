@@ -8,11 +8,12 @@ class FilterButtonsCreat extends StatefulWidget {
   final Color filterCardColor;
   final Action filterCardOnPressd;
 
-  FilterButtonsCreat(
-      {this.filterCardImage,
-      this.filterCardText,
-      this.filterCardColor,
-      this.filterCardOnPressd});
+  FilterButtonsCreat({
+    this.filterCardImage,
+    this.filterCardText,
+    this.filterCardColor,
+    this.filterCardOnPressd,
+  });
 
   @override
   _FilterButtonsCreatState createState() => _FilterButtonsCreatState();
@@ -20,7 +21,6 @@ class FilterButtonsCreat extends StatefulWidget {
 
 class _FilterButtonsCreatState extends State<FilterButtonsCreat> {
   double horizantalPaddingBy10 = 2.43 * SizeConfig.imageSizeMultiplier;
-
   double verticalPaddingBy10 = 1.29 * SizeConfig.heightMultiplier;
 
   @override
@@ -34,7 +34,9 @@ class _FilterButtonsCreatState extends State<FilterButtonsCreat> {
           borderRadius: new BorderRadius.circular(10),
           boxShadow: [
             new BoxShadow(
-                color: widget.filterCardColor, offset: new Offset(0, 3), blurRadius: 5)
+                color: widget.filterCardColor,
+                offset: new Offset(0, 3),
+                blurRadius: 5)
           ],
           color: widget.filterCardColor,
         ),

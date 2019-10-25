@@ -1,13 +1,16 @@
 import 'package:charm_mehregan/Components/Buttons/FilterButtons.dart';
+import 'package:charm_mehregan/Components/Buttons/TypeButtons.dart';
+import 'package:charm_mehregan/Components/Cards/ProductsCards.dart';
 import 'package:charm_mehregan/Components/Sliders/ProductsSlider.dart';
+import 'package:charm_mehregan/Models/ProductsModel.dart';
+import 'package:charm_mehregan/Models/TypesModel.dart';
+import 'package:charm_mehregan/Services/ProductsService.dart';
+import 'package:charm_mehregan/Services/TypesService.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:kf_drawer/kf_drawer.dart';
-
-// class KFProducts extends KFDrawerContent {
-//   KFProducts({Key key});
-// }
 
 class ProductsScreen extends KFDrawerContent {
   ProductsScreen({Key key});
@@ -15,9 +18,48 @@ class ProductsScreen extends KFDrawerContent {
   _ProductsScreenState createState() => _ProductsScreenState();
 }
 
-class _ProductsScreenState extends State<ProductsScreen> {
+class _ProductsScreenState extends State<ProductsScreen>
+    with AutomaticKeepAliveClientMixin<ProductsScreen> {
   double horizantalPaddingBy20 = 4.86 * SizeConfig.imageSizeMultiplier;
   double verticalPaddingBy20 = 2.58 * SizeConfig.heightMultiplier;
+
+//! TODO: Get Data
+  int _currentPage = 1;
+
+  List<ProductsModel> _products = [];
+  List<TypesModel> _types = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _getProducts();
+  }
+
+  // Products
+  _getProducts({int page = 1}) async {
+    var response = await ProductsService.getProducts(page);
+
+    // To check app is getting data or not
+    print(response['products']);
+
+    setState(() {
+      _products.addAll(response['products']);
+      _currentPage = response['current_page'];
+    });
+  }
+
+  // Types
+  _getTypes({int page = 1}) async {
+    var typeResponse = await TypesService.getTypes(page);
+
+    print(typeResponse['types']);
+
+    setState(() {
+      _types.addAll(typeResponse['type']);
+    });
+  }
+
+//! Finish
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +109,14 @@ class _ProductsScreenState extends State<ProductsScreen> {
                   horizontal: horizantalPaddingBy20,
                   vertical: verticalPaddingBy20),
               child: new FilterButtonsUse(),
+              // child: new ListView.builder(
+              //   shrinkWrap: true,
+              //   itemCount: _types.length,
+              //   scrollDirection: Axis.horizontal,
+              //   itemBuilder: (BuildContext context, int index) {
+              //     return new TypeButtonsModel(type: _types[index]);
+              //   },
+              // ),
             ),
 
             // SlideShow
@@ -93,14 +143,28 @@ class _ProductsScreenState extends State<ProductsScreen> {
               ),
             ),
 
-            new SizedBox(height: 3.87 * SizeConfig.heightMultiplier),
+            new SizedBox(height: 2.59 * SizeConfig.heightMultiplier), // 20
 
             // Products
             new Container(
-              height: 25.83 * SizeConfig.heightMultiplier,
-              color: Colors.green,
-            )
+              padding:
+                  EdgeInsets.symmetric(horizontal: horizantalPaddingBy20), // 20
+              child: new GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
+                itemCount: _products.length,
+                shrinkWrap: true,
+                physics: ClampingScrollPhysics(),
+                itemBuilder: (BuildContext context, int index) {
+                  return new ProductsCardsModel(products: _products[index]);
+                },
+              ),
+            ),
           ],
         ));
   }
+
+// To keep products state alive
+  @override
+  bool get wantKeepAlive => true;
 }
