@@ -47,7 +47,13 @@ class _ProductsScreenState extends State<ProductsScreen>
       double maxScroll = _scrollController.position.maxScrollExtent;
       double currentScroll = _scrollController.position.pixels;
 
-      if (maxScroll - currentScroll <= 200) {
+      // if (maxScroll - currentScroll <= 200) {
+      //   if (!_isLoading) {
+      //     _getProducts(page: _currentPage + 1);
+      //   }
+      // }
+
+      if (currentScroll == maxScroll) {
         if (!_isLoading) {
           _getProducts(page: _currentPage + 1);
         }
