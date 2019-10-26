@@ -20,6 +20,10 @@ class ProductsScreen extends KFDrawerContent {
 
 class _ProductsScreenState extends State<ProductsScreen>
     with AutomaticKeepAliveClientMixin<ProductsScreen> {
+// To keep products state alive
+  @override
+  bool get wantKeepAlive => true;
+
   double horizantalPaddingBy20 = 4.86 * SizeConfig.imageSizeMultiplier;
   double verticalPaddingBy20 = 2.58 * SizeConfig.heightMultiplier;
 
@@ -43,7 +47,13 @@ class _ProductsScreenState extends State<ProductsScreen>
       double maxScroll = _scrollController.position.maxScrollExtent;
       double currentScroll = _scrollController.position.pixels;
 
-      if (maxScroll - currentScroll <= 200) {
+      // if (maxScroll - currentScroll <= 200) {
+      //   if (!_isLoading) {
+      //     _getProducts(page: _currentPage + 1);
+      //   }
+      // }
+
+      if (currentScroll == maxScroll) {
         if (!_isLoading) {
           _getProducts(page: _currentPage + 1);
         }
@@ -167,26 +177,25 @@ class _ProductsScreenState extends State<ProductsScreen>
             new SizedBox(height: 2.59 * SizeConfig.heightMultiplier), // 20
 
             // Products
-            new Container(
-              padding:
-                  EdgeInsets.symmetric(horizontal: horizantalPaddingBy20), // 20
-              child: new GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                controller: _scrollController,
-                itemCount: _products.length,
+            new ListView.builder(
+                padding: EdgeInsets.symmetric(
+                    horizontal: horizantalPaddingBy20), // 20
                 shrinkWrap: true,
-                physics: ClampingScrollPhysics(),
-                itemBuilder: (BuildContext context, int index) {
-                  return new ProductsCardsModel(products: _products[index]);
-                },
-              ),
-            ),
+                itemCount: _products.length,
+                controller: _scrollController,
+                itemBuilder: (BuildContext ctxt, int index) {
+                  return new GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2),
+                    itemCount: _products.length,
+                    shrinkWrap: true,
+                    physics: ClampingScrollPhysics(),
+                    itemBuilder: (BuildContext context, int index) {
+                      return new ProductsCardsModel(products: _products[index]);
+                    },
+                  );
+                })
           ],
         ));
   }
-
-// To keep products state alive
-  @override
-  bool get wantKeepAlive => true;
 }
