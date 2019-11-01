@@ -62,7 +62,7 @@ class _ProductsScreenState extends State<ProductsScreen>
   }
 
   // Products
-  _getProducts({int page = 1}) async {
+  _getProducts({int page = 1, bool refresh: false}) async {
     setState(() {
       _isLoading = true;
     });
@@ -73,6 +73,7 @@ class _ProductsScreenState extends State<ProductsScreen>
     print(response['products']);
 
     setState(() {
+      if (refresh == true) _products.clear();
       _products.addAll(response['products']);
       _currentPage = response['current_page'];
       _isLoading = false;
@@ -181,26 +182,29 @@ class _ProductsScreenState extends State<ProductsScreen>
                 ? loadingView()
                 : _products.length == 0
                     ? emptyList()
-                    : new ListView.builder(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: horizantalPaddingBy20), // 20
-                        shrinkWrap: true,
-                        itemCount: _products.length,
-                        controller: _scrollController,
-                        itemBuilder: (BuildContext ctxt, int index) {
-                          return new GridView.builder(
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2),
-                            itemCount: _products.length,
+                    : new RefreshIndicator(
+                        child: new ListView.builder(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: horizantalPaddingBy20), // 20
                             shrinkWrap: true,
-                            physics: ClampingScrollPhysics(),
-                            itemBuilder: (BuildContext context, int index) {
-                              return new ProductsCardsModel(
-                                  products: _products[index]);
-                            },
-                          );
-                        })
+                            itemCount: _products.length,
+                            controller: _scrollController,
+                            itemBuilder: (BuildContext ctxt, int index) {
+                              return new GridView.builder(
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2),
+                                itemCount: _products.length,
+                                shrinkWrap: true,
+                                physics: ClampingScrollPhysics(),
+                                itemBuilder: (BuildContext context, int index) {
+                                  return new ProductsCardsModel(
+                                      products: _products[index]);
+                                },
+                              );
+                            }),
+                        onRefresh: _handleRefresh,
+                      )
           ],
         ));
   }
@@ -210,7 +214,7 @@ class _ProductsScreenState extends State<ProductsScreen>
     return new Center(child: new CircularProgressIndicator());
   }
 
-// Show a text when there is nothing to show
+  // Show a text when there is nothing to show
   Widget emptyList() {
     return new Center(
       child: new Directionality(
@@ -223,5 +227,10 @@ class _ProductsScreenState extends State<ProductsScreen>
                 color: Colors.black)),
       ),
     );
+  }
+
+  Future<Null> _handleRefresh() async {
+    await _getProducts(refresh: true);
+    return null;
   }
 }
