@@ -27,7 +27,7 @@ class ProductsCardsModel extends StatelessWidget {
           new ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: CachedNetworkImage(
-              height: 150,
+              height: screenSize.height,
               width: screenSize.width,
               imageUrl: products.image,
               placeholder: (context, url) => new Container(
