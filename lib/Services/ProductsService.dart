@@ -4,7 +4,8 @@ import 'package:http/http.dart' as http;
 
 class ProductsService {
   static Future<Map> getProducts(int page) async {
-    final response = await http.get('http://roocket.org/api/products?page=${page}');
+    final response =
+        await http.get('http://roocket.org/api/products?page=${page}');
 
     if (response.statusCode == 200) {
       var responseBody = json.decode(response.body)['data'];
