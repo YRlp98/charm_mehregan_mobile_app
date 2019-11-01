@@ -177,25 +177,51 @@ class _ProductsScreenState extends State<ProductsScreen>
             new SizedBox(height: 2.59 * SizeConfig.heightMultiplier), // 20
 
             // Products
-            new ListView.builder(
-                padding: EdgeInsets.symmetric(
-                    horizontal: horizantalPaddingBy20), // 20
-                shrinkWrap: true,
-                itemCount: _products.length,
-                controller: _scrollController,
-                itemBuilder: (BuildContext ctxt, int index) {
-                  return new GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2),
-                    itemCount: _products.length,
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    itemBuilder: (BuildContext context, int index) {
-                      return new ProductsCardsModel(products: _products[index]);
-                    },
-                  );
-                })
+            _products.length == 0 && _isLoading
+                ? loadingView()
+                : _products.length == 0
+                    ? emptyList()
+                    : new ListView.builder(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: horizantalPaddingBy20), // 20
+                        shrinkWrap: true,
+                        itemCount: _products.length,
+                        controller: _scrollController,
+                        itemBuilder: (BuildContext ctxt, int index) {
+                          return new GridView.builder(
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2),
+                            itemCount: _products.length,
+                            shrinkWrap: true,
+                            physics: ClampingScrollPhysics(),
+                            itemBuilder: (BuildContext context, int index) {
+                              return new ProductsCardsModel(
+                                  products: _products[index]);
+                            },
+                          );
+                        })
           ],
         ));
+  }
+
+  // show a loading when app is geting data
+  Widget loadingView() {
+    return new Center(child: new CircularProgressIndicator());
+  }
+
+// Show a text when there is nothing to show
+  Widget emptyList() {
+    return new Center(
+      child: new Directionality(
+        textDirection: TextDirection.rtl,
+        child: new Text('محصولی جهت نمایش وجود ندارد!',
+            style: TextStyle(
+                fontFamily: 'Vazir',
+                fontWeight: FontWeight.bold,
+                fontSize: 1.67 * SizeConfig.textMultiplier,
+                color: Colors.black)),
+      ),
+    );
   }
 }
