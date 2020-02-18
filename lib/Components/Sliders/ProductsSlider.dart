@@ -1,4 +1,3 @@
-// import 'package:cached_network_image/cached_network_image.dart';
 import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
@@ -32,6 +31,80 @@ class ProductsSliderCreate extends StatelessWidget {
               dotBgColor: Colors.transparent,
               dotPosition: DotPosition.bottomRight,
               moveIndicatorFromBottom: 100,
+              images: [
+                new InkWell(
+                  child: new Image.network(
+                      'https://www.paperhigh.com/media/catalog/product/cache/1/thumbnail/600x600/9df78eab33525d08d6e5fb8d27136e95/l/o/low_res_large_vintage_leather_stachel_llptl_lifestyle.jpg',
+                      fit: BoxFit.cover,
+                      loadingBuilder: (context, child, progress) {
+                    return progress == null
+                        ? child
+                        : Container(
+                            height: 3.10 * SizeConfig.heightMultiplier,
+                            width: 3.10 * SizeConfig.imageSizeMultiplier,
+                            child: new Image.asset(
+                                'assets/icons/loading_blocks.gif'),
+                          );
+                  }),
+                  onTap: () {
+                    Navigator.of(context).pushReplacementNamed('/LoginScreen');
+                  },
+                ),
+                new InkWell(
+                  child: new Image.network(
+                      'https://ruitertassen.com/wp-content/uploads/2018/04/brown-leather-laptop-backpack-satchel-for-men-732837.jpg',
+                      fit: BoxFit.cover,
+                      loadingBuilder: (context, child, progress) {
+                    return progress == null
+                        ? child
+                        : Container(
+                            height: 3.10 * SizeConfig.heightMultiplier,
+                            width: 3.10 * SizeConfig.imageSizeMultiplier,
+                            child: new Image.asset(
+                                'assets/icons/loading_blocks.gif'),
+                          );
+                  }),
+                  onTap: () {
+                    Navigator.of(context).pushReplacementNamed('/LoginScreen');
+                  },
+                ),
+                new InkWell(
+                  child: new Image.network(
+                      'https://ruitertassen.com/wp-content/uploads/2018/04/durable-vegetable-tanned-brown-leather-satchel-bag-732337.jpg',
+                      fit: BoxFit.cover,
+                      loadingBuilder: (context, child, progress) {
+                    return progress == null
+                        ? child
+                        : Container(
+                            height: 3.10 * SizeConfig.heightMultiplier,
+                            width: 3.10 * SizeConfig.imageSizeMultiplier,
+                            child: new Image.asset(
+                                'assets/icons/loading_blocks.gif'),
+                          );
+                  }),
+                  onTap: () {
+                    Navigator.of(context).pushReplacementNamed('/LoginScreen');
+                  },
+                ),
+                new InkWell(
+                  child: new Image.network(
+                      'https://ruitertassen.com/wp-content/uploads/2018/04/large-mens-leather-backpack-satchel-732237.jpg',
+                      fit: BoxFit.cover,
+                      loadingBuilder: (context, child, progress) {
+                    return progress == null
+                        ? child
+                        : Container(
+                            height: 3.10 * SizeConfig.heightMultiplier,
+                            width: 3.10 * SizeConfig.imageSizeMultiplier,
+                            child: new Image.asset(
+                                'assets/icons/loading_blocks.gif'),
+                          );
+                  }),
+                  onTap: () {
+                    Navigator.of(context).pushReplacementNamed('/LoginScreen');
+                  },
+                )
+              ],
               // images: [
               //   new InkWell(
               //     child: new CachedNetworkImage(

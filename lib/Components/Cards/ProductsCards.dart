@@ -2,7 +2,6 @@ import 'package:charm_mehregan/Models/ProductsModel.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
-// import 'package:cached_network_image/cached_network_image.dart';
 
 class ProductsCardsModel extends StatelessWidget {
   final ProductsModel products;
@@ -25,20 +24,18 @@ class ProductsCardsModel extends StatelessWidget {
           // GridView image
           new ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: 
-            // CachedNetworkImage(
-            //   height: screenSize.height,
-            //   width: screenSize.width,
-            //   imageUrl: products.image,
-            //   placeholder: (context, url) => new Container(
-            //     height: 3.10 * SizeConfig.heightMultiplier,
-            //     width: 3.10 * SizeConfig.imageSizeMultiplier,
-            //     child: new Image.asset('assets/icons/loading_blocks.gif'),
-            //   ),
-            //   errorWidget: (context, url, error) => Icon(Icons.error),
-            //   fit: BoxFit.cover,
-            // ),
-            new Image.asset('assets/icons/loading_blocks.gif'),
+            child: Image.network(products.image,
+                height: screenSize.height,
+                width: screenSize.width,
+                fit: BoxFit.cover, loadingBuilder: (context, child, progress) {
+              return progress == null
+                  ? child
+                  : Container(
+                      height: 3.10 * SizeConfig.heightMultiplier,
+                      width: 3.10 * SizeConfig.imageSizeMultiplier,
+                      child: new Image.asset('assets/icons/loading_blocks.gif'),
+                    );
+            }),
           ),
 
           // GridView darkBrown layer
