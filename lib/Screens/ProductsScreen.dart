@@ -10,6 +10,7 @@ import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:http/http.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 
 class ProductsScreen extends KFDrawerContent {
@@ -47,11 +48,11 @@ class _ProductsScreenState extends State<ProductsScreen>
       double maxScroll = _scrollController.position.maxScrollExtent;
       double currentScroll = _scrollController.position.pixels;
 
-      // if (maxScroll - currentScroll <= 200) {
-      //   if (!_isLoading) {
-      //     _getProducts(page: _currentPage + 1);
-      //   }
-      // }
+      if (maxScroll - currentScroll <= 200) {
+        if (!_isLoading) {
+          _getProducts(page: _currentPage + 1);
+        }
+      }
 
       // if (currentScroll == maxScroll) {
       //   if (!_isLoading) {
@@ -62,16 +63,17 @@ class _ProductsScreenState extends State<ProductsScreen>
   }
 
   // Products
+  List<Data> response;
+
   _getProducts({int page = 1, bool refresh: false}) async {
     setState(() {
       _isLoading = true;
     });
 
-    var response = await ProductsService.getProducts();
-    print(response);
+    // ProductsModel productModel = await ProductsService.getProducts();
+    // response = productModel.data;
 
-    // To check app is getting data or not
-    // print(response['products']);
+    print(response);
 
     // setState(() {
     //   if (refresh == true) _products.clear();
@@ -179,33 +181,59 @@ class _ProductsScreenState extends State<ProductsScreen>
             new SizedBox(height: 2.59 * SizeConfig.heightMultiplier), // 20
 
             // Products
-            _products.length == 0 && _isLoading
-                ? loadingView()
-                : _products.length == 0
-                    ? emptyList()
-                    : new RefreshIndicator(
-                        child: new ListView.builder(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: horizantalPaddingBy20), // 20
+            new FutureBuilder(
+                future: ProductsService.getProducts(),
+                builder: (context, snapShot) {
+                  if (snapShot.data != null) {
+                    ProductsModel response = snapShot.data;
+                    List<Data> dataList = response.data;
+                    return new ListView.builder(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: horizantalPaddingBy20), // 20
+                        shrinkWrap: true,
+                        itemCount: dataList.length,
+                        controller: _scrollController,
+                        itemBuilder: (BuildContext ctxt, int index) {
+                          return new GridView.builder(
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2),
+                            itemCount: dataList.length,
                             shrinkWrap: true,
-                            itemCount: _products.length,
-                            controller: _scrollController,
-                            itemBuilder: (BuildContext ctxt, int index) {
-                              return new GridView.builder(
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 2),
-                                itemCount: _products.length,
-                                shrinkWrap: true,
-                                physics: ClampingScrollPhysics(),
-                                itemBuilder: (BuildContext context, int index) {
-                                  return new ProductsCardsModel(
-                                      products: _products[index]);
-                                },
-                              );
-                            }),
-                        // onRefresh: _handleRefresh,
-                      )
+                            physics: ClampingScrollPhysics(),
+                            itemBuilder: (BuildContext context, int index) {
+                              return new ProductsCardsModel(
+                                  imageAddress: dataList[index].image,
+                                  title: dataList[index].title);
+                            },
+                          );
+                        });
+
+                        // return new ListView.builder(
+                        // padding: EdgeInsets.symmetric(
+                        //     horizontal: horizantalPaddingBy20), // 20
+                        // shrinkWrap: true,
+                        // itemCount: dataList.length,
+                        // controller: _scrollController,
+                        // itemBuilder: (BuildContext ctxt, int index) {
+                        //   return new GridView.builder(
+                        //     gridDelegate:
+                        //         SliverGridDelegateWithFixedCrossAxisCount(
+                        //             crossAxisCount: 2),
+                        //     itemCount: dataList.length,
+                        //     shrinkWrap: true,
+                        //     physics: ClampingScrollPhysics(),
+                        //     itemBuilder: (BuildContext context, int index) {
+                        //       return new ProductsCardsModel(
+                        //           imageAddress: dataList[index].image,
+                        //           title: dataList[index].title);
+                        //     },
+                        //   );
+                        // });
+
+                  } else
+                    CircularProgressIndicator();
+                })
           ],
         ));
   }
@@ -230,8 +258,8 @@ class _ProductsScreenState extends State<ProductsScreen>
     );
   }
 
-  // Future<Null> _handleRefresh() async {
-  //   await _getProducts(refresh: true);
-  //   return null;
-  // }
+  Future<Null> _handleRefresh() async {
+    await _getProducts(refresh: true);
+    return null;
+  }
 }

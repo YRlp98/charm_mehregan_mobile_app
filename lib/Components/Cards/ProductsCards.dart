@@ -4,11 +4,12 @@ import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
 
 class ProductsCardsModel extends StatelessWidget {
-  final ProductsModel products;
+  final String imageAddress;
+  final String title;
 
   // https://5.imimg.com/data5/LF/PW/MY-42404537/ladies-fashion-leather-shoes-500x500.jpg
 
-  ProductsCardsModel({@required this.products});
+  ProductsCardsModel({@required this.imageAddress, @required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +25,7 @@ class ProductsCardsModel extends StatelessWidget {
           // GridView image
           new ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: Image.network(
-              'https://5.imimg.com/data5/LF/PW/MY-42404537/ladies-fashion-leather-shoes-500x500.jpg',
-              // products.image,
+            child: Image.network(imageAddress,
                 height: screenSize.height,
                 width: screenSize.width,
                 fit: BoxFit.cover, loadingBuilder: (context, child, progress) {
@@ -57,7 +56,7 @@ class ProductsCardsModel extends StatelessWidget {
               child: new RichText(
                 maxLines: 1,
                 text: new TextSpan(
-                  // text: products.title,
+                  text: title,
                   style: TextStyle(
                       fontFamily: 'Vazir',
                       fontWeight: FontWeight.normal,
