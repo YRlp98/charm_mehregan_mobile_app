@@ -24,7 +24,9 @@ class ProductsCardsModel extends StatelessWidget {
           // GridView image
           new ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: Image.network(products.image,
+            child: Image.network(
+              'https://5.imimg.com/data5/LF/PW/MY-42404537/ladies-fashion-leather-shoes-500x500.jpg',
+              // products.image,
                 height: screenSize.height,
                 width: screenSize.width,
                 fit: BoxFit.cover, loadingBuilder: (context, child, progress) {
@@ -55,7 +57,7 @@ class ProductsCardsModel extends StatelessWidget {
               child: new RichText(
                 maxLines: 1,
                 text: new TextSpan(
-                  text: products.title,
+                  // text: products.title,
                   style: TextStyle(
                       fontFamily: 'Vazir',
                       fontWeight: FontWeight.normal,

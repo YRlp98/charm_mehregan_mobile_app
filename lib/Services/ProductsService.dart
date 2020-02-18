@@ -3,21 +3,16 @@ import 'package:charm_mehregan/Models/ProductsModel.dart';
 import 'package:http/http.dart' as http;
 
 class ProductsService {
-  static Future<Map> getProducts(int page) async {
-    final response =
-        await http.get('http://roocket.org/api/products?page=${page}');
-
+  static Future<ProductsModel> getProducts() async {
+    print('**** getProducts ****');
+    String productsUrl = "https://charm.liara.run//api/v1/products";
+    ProductsModel productsList;
+    var response = await http.get(productsUrl);
     if (response.statusCode == 200) {
-      var responseBody = json.decode(response.body)['data'];
-      List<ProductsModel> products = [];
-      responseBody['data'].forEach((item) {
-        products.add(ProductsModel.fromJson(item));
-      });
-
-      return {
-        'current_page': responseBody['current_page'],
-        'products': products
-      };
+      productsList = ProductsModel.fromJson(jsonDecode(response.body));
     }
+
+    print(productsList.data[0].code);
+    return productsList;
   }
 }

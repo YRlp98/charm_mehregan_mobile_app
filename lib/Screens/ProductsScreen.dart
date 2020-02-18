@@ -53,11 +53,11 @@ class _ProductsScreenState extends State<ProductsScreen>
       //   }
       // }
 
-      if (currentScroll == maxScroll) {
-        if (!_isLoading) {
-          _getProducts(page: _currentPage + 1);
-        }
-      }
+      // if (currentScroll == maxScroll) {
+      //   if (!_isLoading) {
+      //     _getProducts(page: _currentPage + 1);
+      //   }
+      // }
     });
   }
 
@@ -67,17 +67,18 @@ class _ProductsScreenState extends State<ProductsScreen>
       _isLoading = true;
     });
 
-    var response = await ProductsService.getProducts(page);
+    var response = await ProductsService.getProducts();
+    print(response);
 
     // To check app is getting data or not
-    print(response['products']);
+    // print(response['products']);
 
-    setState(() {
-      if (refresh == true) _products.clear();
-      _products.addAll(response['products']);
-      _currentPage = response['current_page'];
-      _isLoading = false;
-    });
+    // setState(() {
+    //   if (refresh == true) _products.clear();
+    //   _products.addAll(response['products']);
+    //   _currentPage = response['current_page'];
+    //   _isLoading = false;
+    // });
   }
 
   // Types
@@ -203,7 +204,7 @@ class _ProductsScreenState extends State<ProductsScreen>
                                 },
                               );
                             }),
-                        onRefresh: _handleRefresh,
+                        // onRefresh: _handleRefresh,
                       )
           ],
         ));
@@ -229,8 +230,8 @@ class _ProductsScreenState extends State<ProductsScreen>
     );
   }
 
-  Future<Null> _handleRefresh() async {
-    await _getProducts(refresh: true);
-    return null;
-  }
+  // Future<Null> _handleRefresh() async {
+  //   await _getProducts(refresh: true);
+  //   return null;
+  // }
 }
