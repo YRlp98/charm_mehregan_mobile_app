@@ -10,9 +10,11 @@ class ProductsService {
     var response = await http.get(productsUrl);
     if (response.statusCode == 200) {
       productsList = ProductsModel.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Faild to load data from API');
     }
 
-    print(productsList.data[0].code);
+    // print(productsList.data[0].code);
     return productsList;
   }
 }
