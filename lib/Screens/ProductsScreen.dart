@@ -69,10 +69,6 @@ class _AboutUsScreenState extends State<ProductsScreen> {
                           imageAddress: productsList[index].image,
                           title: productsList[index].title,
                         );
-
-                        // TODO: Delete this line
-                        // new ListTile(
-                        //     title: Text(productsList[index].title));
                       });
                 } else {
                   return Text('There is no data show! :(');
