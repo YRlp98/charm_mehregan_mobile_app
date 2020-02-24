@@ -61,7 +61,6 @@ class _AboutUsScreenState extends State<ProductsScreen> {
                   ProductsModel productsModel = myData.data;
                   List<Data> productsList = productsModel.data;
                   return new GridView.builder(
-                      // shrinkWrap: true,
                       itemCount: productsList.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2),
@@ -70,9 +69,10 @@ class _AboutUsScreenState extends State<ProductsScreen> {
                           imageAddress: productsList[index].image,
                           title: productsList[index].title,
                         );
-                        
-                      // TODO: Delete this line
-                        // new ListTile(title: Text(productsList[index].title));
+
+                        // TODO: Delete this line
+                        // new ListTile(
+                        //     title: Text(productsList[index].title));
                       });
                 } else {
                   return Text('There is no data show! :(');
