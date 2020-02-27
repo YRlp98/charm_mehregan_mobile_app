@@ -1,7 +1,10 @@
 import 'package:charm_mehregan/Components/Buttons/FilterButtons.dart';
+import 'package:charm_mehregan/Components/Buttons/TypeButtons.dart';
 import 'package:charm_mehregan/Components/Cards/ProductsCards.dart';
 import 'package:charm_mehregan/Models/ProductsModel.dart';
+import 'package:charm_mehregan/Models/TypesModel.dart';
 import 'package:charm_mehregan/Services/ProductsService.dart';
+import 'package:charm_mehregan/Services/TypesService.dart';
 import 'package:charm_mehregan/Theme/Colors.dart';
 import 'package:charm_mehregan/Theme/SizeConfig.dart';
 import 'package:flutter/material.dart';
@@ -58,11 +61,41 @@ class _AboutUsScreenState extends State<ProductsScreen> {
       // !Body
       body: new ListView(
         children: <Widget>[
-          new Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: horizantalPaddingBy20,
-                vertical: verticalPaddingBy20),
-            child: new FilterButtonsUse(),
+          // new Padding(
+          //   padding: EdgeInsets.symmetric(
+          //       horizontal: horizantalPaddingBy20,
+          //       vertical: verticalPaddingBy20),
+          //   child: new FilterButtonsUse(),
+          // ),
+
+          new Row(
+            children: <Widget>[
+              new FutureBuilder<TypesModel>(
+                  future: TypesService.getTypes(),
+                  builder: (context, myData) {
+                    if (myData.connectionState == ConnectionState.done) {
+                      if (myData.hasData) {
+                        TypesModel typesModel = myData.data;
+                        List typesList = typesModel.data;
+                        return new ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: typesList.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return new TypeButtonsModel(
+                                  typeId: typesList[index].id,
+                                  typeLable: typesList[index].label);
+                            });
+                      } else {
+                        return Text('No categories defined');
+                      }
+                    } else {
+                      return new Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  }),
+            ],
           ),
 
           // !Products Cards
@@ -72,7 +105,7 @@ class _AboutUsScreenState extends State<ProductsScreen> {
               if (myData.connectionState == ConnectionState.done) {
                 if (myData.hasData) {
                   ProductsModel productsModel = myData.data;
-                  List<Data> productsList = productsModel.data;
+                  List productsList = productsModel.data;
                   return new GridView.builder(
                       shrinkWrap: true,
                       physics: ScrollPhysics(), // to make it scrollable
@@ -89,7 +122,9 @@ class _AboutUsScreenState extends State<ProductsScreen> {
                   return Text('There is no data show! :(');
                 }
               } else {
-                return Center(child: CircularProgressIndicator());
+                return new Center(
+                  child: CircularProgressIndicator(),
+                );
               }
             },
           ),

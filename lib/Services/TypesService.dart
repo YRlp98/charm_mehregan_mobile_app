@@ -3,9 +3,9 @@ import 'package:charm_mehregan/Models/TypesModel.dart';
 import 'package:http/http.dart' as http;
 
 class TypesService {
-  static Future<TypesModel> getProducts() async {
+  static Future<TypesModel> getTypes() async {
     print('**** getTypes ****');
-    String typesUrl = "https://charm.liara.run//api/v1/products";
+    String typesUrl = "https://charm.liara.run/api/v1/types";
     TypesModel typeList;
     var response = await http.get(typesUrl);
     if (response.statusCode == 200) {
