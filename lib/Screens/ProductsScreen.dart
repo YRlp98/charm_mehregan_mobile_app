@@ -1,3 +1,4 @@
+import 'package:charm_mehregan/Components/Buttons/FilterButtons.dart';
 import 'package:charm_mehregan/Components/Cards/ProductsCards.dart';
 import 'package:charm_mehregan/Models/ProductsModel.dart';
 import 'package:charm_mehregan/Services/ProductsService.dart';
@@ -12,48 +13,60 @@ class ProductsScreen extends KFDrawerContent {
 }
 
 class _AboutUsScreenState extends State<ProductsScreen> {
+  double horizantalPaddingBy20 = 4.86 * SizeConfig.imageSizeMultiplier; // 20
+  double verticalPaddingBy20 = 2.58 * SizeConfig.heightMultiplier; // 20
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
 
-        // !Appbar
-        appBar: new AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          centerTitle: true,
-          iconTheme: new IconThemeData(color: darkBrownColor),
-          leading: new IconButton(
-            // Menu icon
-            icon: Icon(
-              Icons.menu,
-            ),
-            onPressed: widget.onMenuPressed,
+      // !Appbar
+      appBar: new AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        iconTheme: new IconThemeData(color: darkBrownColor),
+        leading: new IconButton(
+          // Menu icon
+          icon: Icon(
+            Icons.menu,
           ),
-
-          // Title
-          title: new Text(
-            'محصولات',
-            style: TextStyle(
-                fontFamily: 'Vazir',
-                fontWeight: FontWeight.bold,
-                fontSize: 2 * SizeConfig.textMultiplier,
-                color: darkBrownColor),
-          ),
-
-          // Search Icon
-          actions: <Widget>[
-            new IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {},
-            )
-          ],
+          onPressed: widget.onMenuPressed,
         ),
 
-        // !Body
-        body: new Container(
-          child: new FutureBuilder<ProductsModel>(
+        // Title
+        title: new Text(
+          'محصولات',
+          style: TextStyle(
+              fontFamily: 'Vazir',
+              fontWeight: FontWeight.bold,
+              fontSize: 2 * SizeConfig.textMultiplier,
+              color: darkBrownColor),
+        ),
+
+        // Search Icon
+        actions: <Widget>[
+          new IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {},
+          )
+        ],
+      ),
+
+      // !Body
+      body: new ListView(
+        children: <Widget>[
+          new Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: horizantalPaddingBy20,
+                vertical: verticalPaddingBy20),
+            child: new FilterButtonsUse(),
+          ),
+
+          // !Products Cards
+          new FutureBuilder<ProductsModel>(
             future: ProductsService.getProducts(),
             builder: (context, myData) {
               if (myData.connectionState == ConnectionState.done) {
@@ -61,6 +74,8 @@ class _AboutUsScreenState extends State<ProductsScreen> {
                   ProductsModel productsModel = myData.data;
                   List<Data> productsList = productsModel.data;
                   return new GridView.builder(
+                      shrinkWrap: true,
+                      
                       itemCount: productsList.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2),
@@ -78,6 +93,8 @@ class _AboutUsScreenState extends State<ProductsScreen> {
               }
             },
           ),
-        ));
+        ],
+      ),
+    );
   }
 }
