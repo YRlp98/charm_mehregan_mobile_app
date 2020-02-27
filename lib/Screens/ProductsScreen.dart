@@ -75,7 +75,7 @@ class _AboutUsScreenState extends State<ProductsScreen> {
                   List<Data> productsList = productsModel.data;
                   return new GridView.builder(
                       shrinkWrap: true,
-                      
+                      physics: ScrollPhysics(), // to make it scrollable
                       itemCount: productsList.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2),
