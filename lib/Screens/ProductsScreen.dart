@@ -61,42 +61,46 @@ class _AboutUsScreenState extends State<ProductsScreen> {
       // !Body
       body: new ListView(
         children: <Widget>[
-          // new Padding(
-          //   padding: EdgeInsets.symmetric(
-          //       horizontal: horizantalPaddingBy20,
-          //       vertical: verticalPaddingBy20),
-          //   child: new FilterButtonsUse(),
-          // ),
-
-          new Row(
-            children: <Widget>[
-              new FutureBuilder<TypesModel>(
-                  future: TypesService.getTypes(),
-                  builder: (context, myData) {
-                    if (myData.connectionState == ConnectionState.done) {
-                      if (myData.hasData) {
-                        TypesModel typesModel = myData.data;
-                        List typesList = typesModel.data;
-                        return new ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: typesList.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return new TypeButtonsModel(
-                                  typeId: typesList[index].id,
-                                  typeLable: typesList[index].label);
-                            });
-                      } else {
-                        return Text('No categories defined');
-                      }
-                    } else {
-                      return new Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                  }),
-            ],
-          ),
+          new FutureBuilder<TypesModel>(
+              future: TypesService.getTypes(),
+              builder: (context, myData) {
+                if (myData.connectionState == ConnectionState.done) {
+                  if (myData.hasData) {
+                    TypesModel typesModel = myData.data;
+                    List typesList = typesModel.data;
+                    return new Container(
+                      // color: Colors.amber,
+                      margin: EdgeInsets.all(3),
+                      height: 40,
+                      child: new Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          new ListView.builder(
+                              shrinkWrap: true,
+                              physics: ScrollPhysics(),
+                              itemCount: typesList.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) {
+                                return new Container(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                    ),
+                                    child: new TypeButtonsModel(
+                                        typeId: typesList[index].id,
+                                        typeLable: typesList[index].label));
+                              }),
+                        ],
+                      ),
+                    );
+                  } else {
+                    return Text('No categories defined');
+                  }
+                } else {
+                  return new Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              }),
 
           // !Products Cards
           new FutureBuilder<ProductsModel>(

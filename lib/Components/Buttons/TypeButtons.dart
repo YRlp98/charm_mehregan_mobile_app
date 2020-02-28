@@ -13,36 +13,36 @@ class TypeButtonsModel extends StatelessWidget {
     double horizantalPaddingBy10 = 2.43 * SizeConfig.imageSizeMultiplier;
     double verticalPaddingBy10 = 1.29 * SizeConfig.heightMultiplier;
 
-    @override
-    Widget build(BuildContext context) {
-      return new GestureDetector(
-        onTap: () {
-          print('Type tap');
-        },
-        child: new Container(
+    return new GestureDetector(
+      onTap: () {
+        print('Type tap');
+      },
+      child: new Container(
           padding: EdgeInsets.symmetric(
-              horizontal: horizantalPaddingBy10, vertical: verticalPaddingBy10),
-          height: 5.16 * SizeConfig.heightMultiplier, // 40
+            horizontal: horizantalPaddingBy10,
+            vertical: verticalPaddingBy10,
+          ),
           decoration: new BoxDecoration(
             borderRadius: new BorderRadius.circular(10),
             boxShadow: [
               new BoxShadow(
-                  color: darkBrownColor,
-                  offset: new Offset(0, 3),
-                  blurRadius: 5)
+                color: darkBrownColor,
+                offset: new Offset(0, 3),
+                blurRadius: 5,
+              )
             ],
             color: darkBrownColor,
           ),
-          child: new Text(
-            typeLable,
-            style: TextStyle(
-                fontFamily: 'Vazir',
-                fontWeight: FontWeight.normal,
-                fontSize: 1.67 * SizeConfig.textMultiplier, // 13
-                color: Colors.white),
-          ),
-        ),
-      );
-    }
+          child: new Center(
+            child: new Text(
+              typeLable,
+              style: TextStyle(
+                  fontFamily: 'Vazir',
+                  fontWeight: FontWeight.normal,
+                  fontSize: 1.67 * SizeConfig.textMultiplier, // 13
+                  color: Colors.white),
+            ),
+          )),
+    );
   }
 }
