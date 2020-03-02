@@ -10,8 +10,6 @@ class ProductsCardsModel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-
     return new GestureDetector(
       onTap: () {
         print('Tap');
@@ -27,10 +25,10 @@ class ProductsCardsModel extends StatelessWidget {
             new ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: FadeInImage(
+                fit: BoxFit.cover,
                 image: NetworkImage(
-                  // imageAddress,
-                  'https://5.imimg.com/data5/LF/PW/MY-42404537/ladies-fashion-leather-shoes-500x500.jpg'
-                ),
+                    // imageAddress,
+                    'https://5.imimg.com/data5/LF/PW/MY-42404537/ladies-fashion-leather-shoes-500x500.jpg'),
                 placeholder: AssetImage('assets/icons/loading_blocks.gif'),
               ),
             ),
@@ -38,7 +36,8 @@ class ProductsCardsModel extends StatelessWidget {
             // GridView darkBrown layer
             new Container(
               padding: EdgeInsets.symmetric(
-                  horizontal: 3.16 * SizeConfig.imageSizeMultiplier), // 13
+                horizontal: 3.16 * SizeConfig.imageSizeMultiplier,
+              ), // 13
               alignment: Alignment.center,
               height: 5.16 * SizeConfig.heightMultiplier, // 40
               decoration: new BoxDecoration(
